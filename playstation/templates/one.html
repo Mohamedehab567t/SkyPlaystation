@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فاتورة رقم {{r['R_n']}}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body style="direction: rtl;">
+    <h4 style="text-align: center; font-weight: 800; border: black 1px solid; padding: 8px; width: fit-content; margin: 0px auto;" class="mb-3">تفاصيل فاتورة رقم {{r['R_n']}}</h4>
+    <div class="DETAIL mb-2" style="padding: 10px; border: black 1px solid; width: fit-content; margin: 0px auto;">
+    <p class="detail mt-1" style="font-weight: 600; text-align: center;">اجمالي الساعات : {{r['totalS']}}</p>
+    <p class="detail mt-1" style="font-weight: 600; text-align: center;">اجمالي الاصناف : {{r['totalP']}}</p>
+    <p class="detail mt-1" style="font-weight: 600; text-align: center;">الخصم : {{r['dis']}}</p>
+    <p class="detail mt-1" style="font-weight: 600; text-align: center;">اجمالي : {{r['total']}}</p>
+    <p class="detail mt-1" style="font-weight: 600; text-align: center;">البداية : {{r['startDT']}} - {{r['startDD']}}</p>
+    <p class="detail mt-1" style="font-weight: 600; text-align: center;">النهاية : {{r['endDT']}} - {{r['endDD']}}</p>
+    <p class="detail mt-1" style="font-weight: 600; text-align: center;">اسم الجهاز : {{r['serviceName']}}</p>
+    <p class="detail mt-1" style="font-weight: 600; text-align: center;">رقم الشيفت : {{r['ShiftNumber']}}</p>
+    <p class="detail mt-1" style="font-weight: 600; text-align: center;">رقم الفاتورة : {{r['R_n']}}</p>
+    </div>
+    
+    <h6 style="text-align: center; font-weight: 800; border: black 1px solid; padding: 8px; width: fit-content; margin: 0px auto;" class="mb-3">حركة الفاتورة</h6>
+    <div class="DETAIL mb-2" style="padding: 10px; border: black 1px solid; width: fit-content; margin: 0px auto;">
+    {% for move in r['history'] %}
+    <p class="detail mt-1" style="font-weight: 600; text-align: center;">{{move}}</p>
+    {% endfor %}
+    </div>
+
+</body>
+</html>

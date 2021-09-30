@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{css[0]}}">
+    <link rel="stylesheet" href="{{css[1]}}">
+    <link rel="stylesheet" href="{{css[2]}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{css[3]}}">
+    <title>تسجيل الدخول</title>
+</head>
+<body style="direction: rtl;"> 
+    
+
+    <div class="container" id="LoginForm">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+              <label for="exampleInputEmail1" style="float: right;">رقم المستخدم</label>
+              <div class="clearfix"></div>
+                {{form.n(class="form-control" ,id="exampleInputEmail1", autocomplete="off",placeholder="رقم المستخدم")}}
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1" style="float: right;">كلمة المرور</label>
+              <div class="clearfix"></div>
+              {{form.password(class="form-control" ,id="exampleInputPassword1", autocomplete="off",placeholder="كلمة المرور")}}
+            </div>
+            {{form.submit(class="btn btn-primary")}}
+        </form>
+        {% if errorM %}
+        <div class="alert alert-danger" style="
+                    color: #77000b;
+                    width: fit-content;
+                    margin: 10px auto;
+                        ">
+        {{ errorM }}</div>
+        {% endif %}
+    </div>
+
+
+
+
+    <script src="{{js[0]}}"></script>
+    <script src="{{js[1]}}"></script>
+    <script src="{{js[2]}}"></script>
+</body>
+</html>

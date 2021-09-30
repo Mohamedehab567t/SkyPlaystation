@@ -1,0 +1,548 @@
+@import "../helpers/variabels";
+@import "../layout/fonts";
+@import "../layout/btns";
+@import "../components/buttons";
+@import "../components/table";
+body{
+    display: flex;
+    background-color: $darkblue;
+    overflow: hidden;
+    @media #{$smallmobile} {
+        flex-direction: column;
+        overflow: auto;
+    }
+    @media #{$bigmobile} {
+        flex-direction: column  ;
+        overflow: auto;
+    }
+}
+.menue{
+    flex: 1;
+    height: 100%;
+    background-color: $lightblue;
+    @media #{$smallmobile} {
+        display: none;
+    }
+    @media #{$bigmobile} {
+        display: none;
+    }
+    .info{
+        padding: 20px;
+        display: flex;
+        padding-bottom: 10px;
+        .letter{
+            flex : 2;
+            margin-left: 5px;
+            p{
+                background-color: $cyan;
+                width: 100%;
+                height: 100%;
+                border-radius: 20%;
+                display: flex;
+                @media #{$smallmobile} {
+                    display: none;
+                }
+                @media #{$bigmobile} {
+                    display: none;
+                }
+            }
+                span{
+                    color: white;
+                    font-weight: 700;
+                    font-size: 1.5rem;
+                    margin: auto;
+                }
+            }
+        }
+        .NandR{
+            flex: 4;
+            align-self: center;
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+            span{
+                align-self: center;
+                color: white;
+                font-size: calc(15px +1vmin);
+                @media #{$smallmobile} {
+                    display: none;
+                }
+                @media #{$bigmobile} {
+                    display: none;
+                }
+            }
+        }
+    }
+    .main-menue{
+        .m{
+            display: flex;
+            justify-content: flex-start;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color .1s ease-in;
+            &:hover{
+                background-color: $hoverAndActive;
+            }
+            .icon{
+                margin: 0px 25px;
+            }
+            .title{
+                color: white;
+            }
+        }
+    }
+    .btns{
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+        a{
+            font-size: .7rem;
+        }
+        @media #{$smallmobile} {
+            margin-bottom : 5px;
+        }
+        @media #{$bigmobile} {
+            margin-bottom : 5px;
+        }
+    }
+#services{
+    flex: 5;
+    height: 100vh;
+    background-color: $darkblue;
+    .table{
+        display : grid;
+        grid-template-columns: repeat(8 , 110px);
+        gap: 8px;
+        width: fit-content;
+        margin: 10px auto;
+        overflow-y: auto ;
+        scrollbar-color: red;
+        .device{
+            background-color: $notactive;
+            padding: 5px;
+            border-radius: 0px 5px 0px 0px;
+            height: 100px;
+            cursor: pointer;
+            position: relative;
+            opacity: 1;
+            .Counter{
+                position: absolute;
+                bottom: 0;
+                right: 10px;
+              }
+            &:hover{
+                background-color: $hoverAndActive
+            }
+            .img{
+                width: fit-content;
+                margin: 3px auto;
+                img{
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+            P{
+                text-align: center;
+                margin: unset;
+            }
+            .btns{
+                display: flex;
+                button{
+                    margin: auto;
+                    padding: 2px !important;
+                    width: 60px;
+                }
+            }
+            .ShadowDevice{
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: 0px 5px 0px 0px;
+                width: 100%;
+                height: 100%;
+                background-color: black;
+                opacity: 0;
+            }
+        }
+    }
+    .DeviceRecipt{
+        border-top: gray .5px solid;
+        height: 40%;
+        display: flex;
+        position: relative;
+        margin-top: 100px;
+        .calc{
+            flex: 3;
+            border-left: gray .5px solid;
+            overflow-y: auto ;
+            overflow-x: hidden;
+            position: relative;
+        }
+        .items{
+            flex: 2;
+            border-left: gray .5px solid;
+            overflow-y: auto ;
+            overflow-x: hidden;
+            table{
+                @extend %table;
+            }
+            table,th,td{
+                @extend %t-content;
+            }
+            #search{
+                width: 80%;
+                margin: 5px auto;
+            }
+        }
+        .history{
+            flex: 2;
+            border-left: gray .5px solid;
+            overflow-y: auto ;
+            overflow-x: hidden;
+            .one-record{
+                font-size: 14px;
+                text-align: center;
+                color: white;
+                margin-bottom: 3px;
+            }
+        }
+        .calc{
+            .TimeAndSetting{
+                display: flex;
+                .setting{
+                    flex: 2;
+                    .oneLine{
+                        text-align: start;
+                        margin-bottom: 5px;
+                        span{
+                            margin-left: 5px;
+                            margin-right: 5px;
+                            color: white;
+                        }
+                        input{
+                            width: 60px;
+                            outline: none;
+                        }
+                        button{
+                            @extend %bu;
+                        }
+                    }
+                }
+                .time{
+                    flex: 1;
+                    p{
+                        color: white;
+                        width: fit-content;
+                        margin: 3px auto;
+                    }
+                }
+            }
+            table, td, th {
+                @extend %t-content;
+              }
+              
+              table {
+                @extend %table;
+              }
+              .reciptInformation{
+                .reciptEnd{
+                    display: flex;
+                    gap: 8px;
+                    justify-content: center;
+                    padding: 0px 60px;
+                  button{
+                      flex: 1;
+                  }
+                }
+                .spanCon{
+                    display: grid;
+                    grid-template-columns: repeat(2, 40%);
+                    justify-content: center;
+                    text-align: center;
+                    gap: 5px;
+                span{
+                    color: white;
+                    padding: 3px;
+                    border: white 0.5px solid;
+                }
+                #totlaNum{
+                    background-color: rgb(75, 75, 255);
+                }
+                #allNum{
+                    background-color: rgb(9, 9, 161);
+                }
+                #restNum{
+                    background-color: rgb(9, 102, 9);
+                }
+                #discountNum{
+                    background-color: rgb(240, 27, 27);
+                }
+            }
+              }
+
+        }
+        #StartRecipt{
+            position: absolute;
+            background-color: $darkblue;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            button{
+                font-size: 1.5rem;
+                height: 50px;
+                align-self: center;
+            }
+        }
+    }
+}
+#S{
+    flex: 5;
+    color: white;
+    .settingContainer{
+        display: flex;
+        @media #{$smallmobile} {
+            flex-direction: column;
+        }
+        @media #{$bigmobile} {
+            flex-direction: column  ;
+        }
+        padding: 10px;
+        gap: 5px;
+        .addService , .addproduct{
+            flex: 1;
+            padding: 5px;
+            border: white 1px solid;
+            form{
+                color: white;
+                #iconsforservices{
+                    display: flex;
+                    .img{
+                        flex: 1;
+                        background-color: white;
+                        padding: 5px;
+                        margin: 2px;
+                        border-radius: 10px;
+                        display: flex;
+                        cursor: pointer;
+                        &:hover{
+                            background-color: tomato;
+                        }
+                        img{
+                            width: 48px;
+                            height: 48px;
+                            margin: auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .Addmsg{
+        width: 80%;
+        margin: 2px auto;
+    }
+}
+#BackDrop{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.8);
+    gap: 5px;
+    .one{
+        flex: 1;
+        display: flex;
+        .fatora{
+            width: 90%;
+            height: 90%;
+            margin: auto;
+            background-color: white;
+            #fatora_child{
+                width: 40%;
+                max-height: 100%;
+                overflow: auto;
+                margin: 2px auto;
+                .infoss{
+                    display: grid;
+                    grid-template-columns: repeat(2, 40%);
+                    justify-content: center;
+                    text-align: center;
+                    gap: 10px;
+                    span{
+                        border: black .5px solid;
+                    }
+                }
+                .Dte{
+                    font-size: 13px;
+                    text-align: center;
+                }
+                .img{
+                    margin: 3px auto;
+                    width: fit-content;
+                    img{
+                        width: 100px;
+                        height: 100px;    
+                    }
+                }
+                table, td, th {
+                    @extend %t-content;
+                  }
+                table{
+                    font-size: 12px !important;
+                    @extend %table;
+                }
+            }
+        }
+    }
+    .two{
+        flex: 1;
+        display: flex;
+        .RECIPTSHAPE{
+            padding: 10px;
+            text-align: center;
+            background: white;
+            margin: auto;
+            p{
+                font-weight: 600;
+            }
+            .btns{
+                display: flex;
+                gap: 5px;
+                button{
+                    margin: auto;
+                }
+            }
+        }
+    }
+
+}
+.Loading{
+    position : fixed;
+    top : 0;
+    left : 0;
+    width:100%;
+    height:100%;
+    background-color : rgba(255,255,255,1);
+}
+#excel{
+    flex: 5;
+    color: white;
+    overflow-y: auto;
+    @media #{$smallmobile} {
+        overflow-y: unset;
+    }
+      @media #{$bigmobile} {
+        overflow-y: unset;
+    }
+    .serach{
+        display: grid;
+        width : 50%;
+        grid-template-columns: repeat(3 , 35%);
+        gap: 10px;
+        margin: 3px auto;
+        @media #{$smallmobile} {
+            grid-template-columns: repeat(1 , 100%);
+        }
+          @media #{$bigmobile} {
+            grid-template-columns: repeat(1 , 100%);
+        }
+    }
+    #tableConR{
+        width: 70%;
+        margin: 3px auto;
+        table, td, th {
+            @extend %t-content;
+          }
+        table{
+            font-size: 12px !important;
+            @media #{$smallmobile} {
+            font-size: 10px !important;
+            }
+              @media #{$bigmobile} {
+            font-size: 10px !important;
+            }
+            @extend %table;
+        }
+    }
+
+}
+.s-active{
+    background-color: tomato !important;
+}
+.ser-active{
+    border: black .5px solid;
+}
+.TitleOfSections{
+    color: white;
+    text-align: center;
+}
+.min , .plus{
+    cursor: pointer;
+}
+.m-active{
+    background-color: $hoverAndActive;
+}
+a{
+    text-decoration: none;
+    &:hover{
+        text-decoration: none;
+    }
+}
+#GetMenue{
+    display: none;
+    color: white;
+    background-color: #414550;
+    outline: none;
+    border: white .5px solid;
+    margin: 2px;
+    width: 15%;
+    padding: 10px;
+    @media #{$smallmobile} {
+        display: block;
+    }
+    @media #{$bigmobile} {
+        display: block;
+    }
+}
+.hideshow{
+    display: block !important;
+}
+#EndShift{
+    @media #{$smallmobile} {
+        display: none;
+    }
+    @media #{$bigmobile} {
+        display: none;
+    }
+}
+#Aservices{
+    @media #{$smallmobile} {
+        display: none;
+    }
+    @media #{$bigmobile} {
+        display: none;
+    }
+}
+#RRRTabels{
+    @media #{$smallmobile} {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 5px;
+    }
+    @media #{$bigmobile} {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 5px;
+    }
+}
+@keyframes t {
+    0%{
+        opacity: 0
+    }
+    100%{
+        opacity: 1
+    }
+}

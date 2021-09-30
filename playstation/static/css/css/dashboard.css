@@ -1,0 +1,615 @@
+body {
+  font-family: "Tajawal", sans-serif;
+}
+
+.btns {
+  display: flex;
+}
+.btns button {
+  margin: auto;
+}
+
+#services .DeviceRecipt .calc .TimeAndSetting .setting .oneLine button {
+  outline: none;
+  border: none;
+  width: 60px;
+  padding: 5px;
+  color: white;
+  background-color: #0DC100;
+  border-radius: 5px;
+  margin: 2px auto;
+}
+#services .DeviceRecipt .calc .TimeAndSetting .setting .oneLine button:hover {
+  background-color: #0c7704;
+}
+
+#excel #tableConR table, #BackDrop .one .fatora #fatora_child table, #services .DeviceRecipt .calc table, #services .DeviceRecipt .items table {
+  width: 99%;
+  border-collapse: collapse;
+  color: black;
+  margin: 0px auto;
+  text-align: center;
+  background-color: white;
+}
+#excel #tableConR table #excel #tableConR table, #excel #tableConR table table, #excel #tableConR table #excel #tableConR td, #excel #tableConR table td, #excel #tableConR table #excel #tableConR th, #excel #tableConR table th, #excel #tableConR table #BackDrop .one .fatora #fatora_child table, #BackDrop .one .fatora #fatora_child #excel #tableConR table table, #excel #tableConR #BackDrop .one .fatora #fatora_child table table, #BackDrop .one .fatora #fatora_child table table, #excel #tableConR table #BackDrop .one .fatora #fatora_child td, #BackDrop .one .fatora #fatora_child #excel #tableConR table td, #excel #tableConR #BackDrop .one .fatora #fatora_child table td, #BackDrop .one .fatora #fatora_child table td, #excel #tableConR table #BackDrop .one .fatora #fatora_child th, #BackDrop .one .fatora #fatora_child #excel #tableConR table th, #excel #tableConR #BackDrop .one .fatora #fatora_child table th, #BackDrop .one .fatora #fatora_child table th, #services .DeviceRecipt .calc table #excel #tableConR table, #excel #tableConR #services .DeviceRecipt .calc table table, #services .DeviceRecipt .calc table #excel #tableConR td, #excel #tableConR #services .DeviceRecipt .calc table td, #services .DeviceRecipt .calc table #excel #tableConR th, #excel #tableConR #services .DeviceRecipt .calc table th, #services .DeviceRecipt .calc table #BackDrop .one .fatora #fatora_child table, #services .DeviceRecipt .calc table #BackDrop .one .fatora #fatora_child td, #services .DeviceRecipt .calc table #BackDrop .one .fatora #fatora_child th, #excel #tableConR table #services .DeviceRecipt .calc table, #services .DeviceRecipt .calc table #services .DeviceRecipt .calc table, #services .DeviceRecipt .calc #excel #tableConR table table, #excel #tableConR #services .DeviceRecipt .calc table table, #services .DeviceRecipt .calc table table, #excel #tableConR table #services .DeviceRecipt .calc td, #services .DeviceRecipt .calc table #services .DeviceRecipt .calc td, #services .DeviceRecipt .calc #excel #tableConR table td, #excel #tableConR #services .DeviceRecipt .calc table td, #services .DeviceRecipt .calc table td, #excel #tableConR table #services .DeviceRecipt .calc th, #services .DeviceRecipt .calc table #services .DeviceRecipt .calc th, #services .DeviceRecipt .calc #excel #tableConR table th, #excel #tableConR #services .DeviceRecipt .calc table th, #services .DeviceRecipt .calc table th, #excel #tableConR table #services .DeviceRecipt .items table, #services .DeviceRecipt .calc table #services .DeviceRecipt .items table, #services .DeviceRecipt .items #excel #tableConR table table, #excel #tableConR #services .DeviceRecipt .items table table, #services .DeviceRecipt .items .calc table table, #services .DeviceRecipt .calc .items table table, #excel #tableConR table #services .DeviceRecipt .items th, #services .DeviceRecipt .calc table #services .DeviceRecipt .items th, #services .DeviceRecipt .items #excel #tableConR table th, #excel #tableConR #services .DeviceRecipt .items table th, #services .DeviceRecipt .items .calc table th, #services .DeviceRecipt .calc .items table th, #excel #tableConR table #services .DeviceRecipt .items td, #services .DeviceRecipt .calc table #services .DeviceRecipt .items td, #services .DeviceRecipt .items #excel #tableConR table td, #excel #tableConR #services .DeviceRecipt .items table td, #services .DeviceRecipt .items .calc table td, #services .DeviceRecipt .calc .items table td, #services .DeviceRecipt .items table #excel #tableConR table, #excel #tableConR #services .DeviceRecipt .items table table, #services .DeviceRecipt .items table #excel #tableConR td, #excel #tableConR #services .DeviceRecipt .items table td, #services .DeviceRecipt .items table #excel #tableConR th, #excel #tableConR #services .DeviceRecipt .items table th, #services .DeviceRecipt .items table #BackDrop .one .fatora #fatora_child table, #services .DeviceRecipt .items table #BackDrop .one .fatora #fatora_child td, #services .DeviceRecipt .items table #BackDrop .one .fatora #fatora_child th, #services .DeviceRecipt .items table .calc table, #services .DeviceRecipt .calc .items table table, #services .DeviceRecipt .items table .calc td, #services .DeviceRecipt .calc .items table td, #services .DeviceRecipt .items table .calc th, #services .DeviceRecipt .calc .items table th, #services .DeviceRecipt .items table table, #services .DeviceRecipt .items table th, #services .DeviceRecipt .items table td {
+  border: 0.5px solid #aaaaaa;
+}
+
+body {
+  display: flex;
+  background-color: #1A1E2B;
+  overflow: hidden;
+}
+@media screen and (max-width:400px) {
+  body {
+    flex-direction: column;
+    overflow: auto;
+  }
+}
+@media screen and (min-width:401px) and (max-width:768px) {
+  body {
+    flex-direction: column;
+    overflow: auto;
+  }
+}
+
+.menue {
+  flex: 1;
+  height: 100%;
+  background-color: #414550;
+}
+@media screen and (max-width:400px) {
+  .menue {
+    display: none;
+  }
+}
+@media screen and (min-width:401px) and (max-width:768px) {
+  .menue {
+    display: none;
+  }
+}
+.menue .info {
+  padding: 20px;
+  display: flex;
+  padding-bottom: 10px;
+}
+.menue .info .letter {
+  flex: 2;
+  margin-left: 5px;
+}
+.menue .info .letter p {
+  background-color: #006478;
+  width: 100%;
+  height: 100%;
+  border-radius: 20%;
+  display: flex;
+}
+@media screen and (max-width:400px) {
+  .menue .info .letter p {
+    display: none;
+  }
+}
+@media screen and (min-width:401px) and (max-width:768px) {
+  .menue .info .letter p {
+    display: none;
+  }
+}
+.menue .info .letter span {
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: auto;
+}
+.menue .NandR {
+  flex: 4;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+.menue .NandR span {
+  align-self: center;
+  color: white;
+  font-size: calc(15px +1vmin);
+}
+@media screen and (max-width:400px) {
+  .menue .NandR span {
+    display: none;
+  }
+}
+@media screen and (min-width:401px) and (max-width:768px) {
+  .menue .NandR span {
+    display: none;
+  }
+}
+
+.main-menue .m {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.1s ease-in;
+}
+.main-menue .m:hover {
+  background-color: #576071;
+}
+.main-menue .m .icon {
+  margin: 0px 25px;
+}
+.main-menue .m .title {
+  color: white;
+}
+
+.btns {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+.btns a {
+  font-size: 0.7rem;
+}
+@media screen and (max-width:400px) {
+  .btns {
+    margin-bottom: 5px;
+  }
+}
+@media screen and (min-width:401px) and (max-width:768px) {
+  .btns {
+    margin-bottom: 5px;
+  }
+}
+
+#services {
+  flex: 5;
+  height: 100vh;
+  background-color: #1A1E2B;
+}
+#services .table {
+  display: grid;
+  grid-template-columns: repeat(8, 110px);
+  gap: 8px;
+  width: fit-content;
+  margin: 10px auto;
+  overflow-y: auto;
+  scrollbar-color: red;
+}
+#services .table .device {
+  background-color: #93FB96;
+  padding: 5px;
+  border-radius: 0px 5px 0px 0px;
+  height: 100px;
+  cursor: pointer;
+  position: relative;
+  opacity: 1;
+}
+#services .table .device .Counter {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+}
+#services .table .device:hover {
+  background-color: #576071;
+}
+#services .table .device .img {
+  width: fit-content;
+  margin: 3px auto;
+}
+#services .table .device .img img {
+  width: 50px;
+  height: 50px;
+}
+#services .table .device P {
+  text-align: center;
+  margin: unset;
+}
+#services .table .device .btns {
+  display: flex;
+}
+#services .table .device .btns button {
+  margin: auto;
+  padding: 2px !important;
+  width: 60px;
+}
+#services .table .device .ShadowDevice {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0px 5px 0px 0px;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0;
+}
+#services .DeviceRecipt {
+  border-top: gray 0.5px solid;
+  height: 40%;
+  display: flex;
+  position: relative;
+  margin-top: 100px;
+}
+#services .DeviceRecipt .calc {
+  flex: 3;
+  border-left: gray 0.5px solid;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+#services .DeviceRecipt .items {
+  flex: 2;
+  border-left: gray 0.5px solid;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+#services .DeviceRecipt .items #search {
+  width: 80%;
+  margin: 5px auto;
+}
+#services .DeviceRecipt .history {
+  flex: 2;
+  border-left: gray 0.5px solid;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+#services .DeviceRecipt .history .one-record {
+  font-size: 14px;
+  text-align: center;
+  color: white;
+  margin-bottom: 3px;
+}
+#services .DeviceRecipt .calc .TimeAndSetting {
+  display: flex;
+}
+#services .DeviceRecipt .calc .TimeAndSetting .setting {
+  flex: 2;
+}
+#services .DeviceRecipt .calc .TimeAndSetting .setting .oneLine {
+  text-align: start;
+  margin-bottom: 5px;
+}
+#services .DeviceRecipt .calc .TimeAndSetting .setting .oneLine span {
+  margin-left: 5px;
+  margin-right: 5px;
+  color: white;
+}
+#services .DeviceRecipt .calc .TimeAndSetting .setting .oneLine input {
+  width: 60px;
+  outline: none;
+}
+#services .DeviceRecipt .calc .TimeAndSetting .time {
+  flex: 1;
+}
+#services .DeviceRecipt .calc .TimeAndSetting .time p {
+  color: white;
+  width: fit-content;
+  margin: 3px auto;
+}
+#services .DeviceRecipt .calc .reciptInformation .reciptEnd {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 0px 60px;
+}
+#services .DeviceRecipt .calc .reciptInformation .reciptEnd button {
+  flex: 1;
+}
+#services .DeviceRecipt .calc .reciptInformation .spanCon {
+  display: grid;
+  grid-template-columns: repeat(2, 40%);
+  justify-content: center;
+  text-align: center;
+  gap: 5px;
+}
+#services .DeviceRecipt .calc .reciptInformation .spanCon span {
+  color: white;
+  padding: 3px;
+  border: white 0.5px solid;
+}
+#services .DeviceRecipt .calc .reciptInformation .spanCon #totlaNum {
+  background-color: #4b4bff;
+}
+#services .DeviceRecipt .calc .reciptInformation .spanCon #allNum {
+  background-color: #0909a1;
+}
+#services .DeviceRecipt .calc .reciptInformation .spanCon #restNum {
+  background-color: #096609;
+}
+#services .DeviceRecipt .calc .reciptInformation .spanCon #discountNum {
+  background-color: #f01b1b;
+}
+#services .DeviceRecipt #StartRecipt {
+  position: absolute;
+  background-color: #1A1E2B;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+#services .DeviceRecipt #StartRecipt button {
+  font-size: 1.5rem;
+  height: 50px;
+  align-self: center;
+}
+
+#S {
+  flex: 5;
+  color: white;
+}
+#S .settingContainer {
+  display: flex;
+  padding: 10px;
+  gap: 5px;
+}
+@media screen and (max-width:400px) {
+  #S .settingContainer {
+    flex-direction: column;
+  }
+}
+@media screen and (min-width:401px) and (max-width:768px) {
+  #S .settingContainer {
+    flex-direction: column;
+  }
+}
+#S .settingContainer .addService, #S .settingContainer .addproduct {
+  flex: 1;
+  padding: 5px;
+  border: white 1px solid;
+}
+#S .settingContainer .addService form, #S .settingContainer .addproduct form {
+  color: white;
+}
+#S .settingContainer .addService form #iconsforservices, #S .settingContainer .addproduct form #iconsforservices {
+  display: flex;
+}
+#S .settingContainer .addService form #iconsforservices .img, #S .settingContainer .addproduct form #iconsforservices .img {
+  flex: 1;
+  background-color: white;
+  padding: 5px;
+  margin: 2px;
+  border-radius: 10px;
+  display: flex;
+  cursor: pointer;
+}
+#S .settingContainer .addService form #iconsforservices .img:hover, #S .settingContainer .addproduct form #iconsforservices .img:hover {
+  background-color: tomato;
+}
+#S .settingContainer .addService form #iconsforservices .img img, #S .settingContainer .addproduct form #iconsforservices .img img {
+  width: 48px;
+  height: 48px;
+  margin: auto;
+}
+#S .Addmsg {
+  width: 80%;
+  margin: 2px auto;
+}
+
+#BackDrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  gap: 5px;
+}
+#BackDrop .one {
+  flex: 1;
+  display: flex;
+}
+#BackDrop .one .fatora {
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  background-color: white;
+}
+#BackDrop .one .fatora #fatora_child {
+  width: 40%;
+  max-height: 100%;
+  overflow: auto;
+  margin: 2px auto;
+}
+#BackDrop .one .fatora #fatora_child .infoss {
+  display: grid;
+  grid-template-columns: repeat(2, 40%);
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+}
+#BackDrop .one .fatora #fatora_child .infoss span {
+  border: black 0.5px solid;
+}
+#BackDrop .one .fatora #fatora_child .Dte {
+  font-size: 13px;
+  text-align: center;
+}
+#BackDrop .one .fatora #fatora_child .img {
+  margin: 3px auto;
+  width: fit-content;
+}
+#BackDrop .one .fatora #fatora_child .img img {
+  width: 100px;
+  height: 100px;
+}
+#BackDrop .one .fatora #fatora_child table {
+  font-size: 12px !important;
+}
+#BackDrop .two {
+  flex: 1;
+  display: flex;
+}
+#BackDrop .two .RECIPTSHAPE {
+  padding: 10px;
+  text-align: center;
+  background: white;
+  margin: auto;
+}
+#BackDrop .two .RECIPTSHAPE p {
+  font-weight: 600;
+}
+#BackDrop .two .RECIPTSHAPE .btns {
+  display: flex;
+  gap: 5px;
+}
+#BackDrop .two .RECIPTSHAPE .btns button {
+  margin: auto;
+}
+
+.Loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+#excel {
+  flex: 5;
+  color: white;
+  overflow-y: auto;
+}
+@media screen and (max-width:400px) {
+  #excel {
+    overflow-y: unset;
+  }
+}
+@media screen and (min-width:401px) and (max-width:768px) {
+  #excel {
+    overflow-y: unset;
+  }
+}
+#excel .serach {
+  display: grid;
+  width: 50%;
+  grid-template-columns: repeat(3, 35%);
+  gap: 10px;
+  margin: 3px auto;
+}
+@media screen and (max-width:400px) {
+  #excel .serach {
+    grid-template-columns: repeat(1, 100%);
+  }
+}
+@media screen and (min-width:401px) and (max-width:768px) {
+  #excel .serach {
+    grid-template-columns: repeat(1, 100%);
+  }
+}
+#excel #tableConR {
+  width: 70%;
+  margin: 3px auto;
+}
+#excel #tableConR table {
+  font-size: 12px !important;
+}
+@media screen and (max-width:400px) {
+  #excel #tableConR table {
+    font-size: 10px !important;
+  }
+}
+@media screen and (min-width:401px) and (max-width:768px) {
+  #excel #tableConR table {
+    font-size: 10px !important;
+  }
+}
+
+.s-active {
+  background-color: tomato !important;
+}
+
+.ser-active {
+  border: black 0.5px solid;
+}
+
+.TitleOfSections {
+  color: white;
+  text-align: center;
+}
+
+.min, .plus {
+  cursor: pointer;
+}
+
+.m-active {
+  background-color: #576071;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+
+#GetMenue {
+  display: none;
+  color: white;
+  background-color: #414550;
+  outline: none;
+  border: white 0.5px solid;
+  margin: 2px;
+  width: 15%;
+  padding: 10px;
+}
+@media screen and (max-width:400px) {
+  #GetMenue {
+    display: block;
+  }
+}
+@media screen and (min-width:401px) and (max-width:768px) {
+  #GetMenue {
+    display: block;
+  }
+}
+
+.hideshow {
+  display: block !important;
+}
+
+@media screen and (max-width:400px) {
+  #EndShift {
+    display: none;
+  }
+}
+@media screen and (min-width:401px) and (max-width:768px) {
+  #EndShift {
+    display: none;
+  }
+}
+
+@media screen and (max-width:400px) {
+  #Aservices {
+    display: none;
+  }
+}
+@media screen and (min-width:401px) and (max-width:768px) {
+  #Aservices {
+    display: none;
+  }
+}
+
+@media screen and (max-width:400px) {
+  #RRRTabels {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 5px;
+  }
+}
+@media screen and (min-width:401px) and (max-width:768px) {
+  #RRRTabels {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 5px;
+  }
+}
+
+@keyframes t {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*# sourceMappingURL=dashboard.css.map */

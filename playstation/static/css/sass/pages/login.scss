@@ -1,0 +1,16 @@
+@import '../layout/fonts';
+@import '../helpers/variabels';
+body{
+    display: flex;
+}
+#LoginForm{
+    width: 60% !important;
+    height: fit-content;
+    margin: auto;
+    @media #{$smallmobile} {
+        width: 80% !important;
+    }
+    @media #{$bigmobile} {
+        width: 80% !important;
+    }
+}

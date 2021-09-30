@@ -1,0 +1,28 @@
+body {
+  font-family: "Tajawal", sans-serif;
+}
+
+  .Dte {
+    font-size: 13px;
+    text-align: center;
+  }
+  .img {
+    margin: 3px auto;
+    width: fit-content;
+  }
+  .img img {
+    width: 100px;
+    height: 100px;
+  }
+  table , th , td {
+    border: .5px solid rgb(170, 170, 170);
+    font-size: 13px !important;
+  }
+  table{
+    width: 99%;
+    border-collapse: collapse;
+    color: rgb(0, 0, 0);
+    margin: 0px auto;
+    text-align: center;
+    background-color: white;
+  }

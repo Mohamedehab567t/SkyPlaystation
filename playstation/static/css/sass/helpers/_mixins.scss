@@ -1,0 +1,16 @@
+@mixin custom_transition($prop) {
+    transition: $prop 0.8s ease-in-out;
+}
+
+@mixin custom_transition_two($prop,$prop2) {
+    transition: $prop , $prop2 0.2s ease-in-out;
+}
+
+@mixin prifixer($prop , $val) {
+    #{'-' + 'wibkit' + '-' + $prop} : $val;
+    #{'-' + 'moz' + '-' + $prop} : $val;
+    #{'-' + 'o' + '-' + $prop} : $val;
+    #{'-' + 'ms' + '-' + $prop} : $val;
+    
+    #{$prop} : $val;
+}

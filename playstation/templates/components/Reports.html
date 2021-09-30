@@ -1,0 +1,37 @@
+<div id="RRRTabels">
+  <table class="mb-4" id="ReportsTable">
+    <thead>
+        <tr style="font-size: 14px;">
+            <th>التاريخ</th>
+            <th>رقم الشيفت</th>
+            <th>الخدمة</th>
+            <th>رقم الفاتورة</th>
+            <th>خصم الفاتورة</th>
+            <th>صافي الفاتورة</th>
+            <th>عرض</th>
+          </tr>
+    </thead>
+    <tbody>
+        {% for info in r %}
+        <tr style="font-size: 14px;">
+            <td>{{ info['endDD'] }}</td>
+            <td>{{info['ShiftNumber']}}</td>
+            <td>{{ info['serviceName'] }}</td>
+            <td>{{ info['R_n'] }}</td>
+            <td>{{ info['dis'] }}</td>
+            <td>{{ info['total'] }}</td>
+            <td><a target="_blank" href="{{url_for('R_Detail' , id= info['_id'])}}" class="btn btn-primary"><i class="bi bi-binoculars" style="color: white;"></i></a></td>
+          </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+<table  class="mb-4">
+  <thead>
+    <tr style="font-size: 14px; font-weight: 800;">
+      <td> الاجمالي :  {{totalInReport['total']}} </td>
+      <td> اجمالي الخصومات : {{totalInReport['dis']}} </td>
+      <td> صافي : {{totalInReport['safy']}}</td>
+    </tr>
+  </thead>
+</table>

@@ -1,0 +1,77 @@
+<div id="fatora_child">
+    <div class="img">
+    <img src="{{url_for('static' , filename='images/ll.png')}}">
+  </div>
+  <div class="Dte">
+    <span>
+      الوقت : {{obj['startDT']}}
+    </span>
+    <span>
+      التاريخ : {{obj['startDD']}}
+    </span>
+  </div>
+  <P class="mt-1" style="text-align: center; font-weight: 600;">رقم الفاتورة : {{lastShiftRecipts + 1}}</P>
+  <hr style="border: black .3px solid;">
+  {% if obj['totalS'] != 0  %}
+  <div class="hours">
+    <h6 class="mb-1" style="text-align: center;">اجمالي الساعات</h6>
+    <table class="mb-4">
+      <thead>
+        <tr>
+          <th>اجمالي</th>
+          <th>نهاية</th>
+          <th>بداية</th>
+          <th>اسم الجهاز</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{obj['totalS']}}</td>
+          <td>{{obj['endDT']}}</td>
+          <td>{{obj['startDT']}}</td>
+          <td>{{serviceName['S-name']}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <hr style="border: black .3px solid;">
+  {% endif %}
+  {% if obj['products']|length != 0 %}
+  <div class="product">
+    <h6 class="mb-1" style="text-align: center;">اجمالي الاصناف</h6>
+    <table class="mb-4">
+      <thead>
+        <tr>
+          <th>اجمالي</th>
+          <th>الكمية</th>
+          <th>سعر الصنف</th>
+          <th>اسم الصنف</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in obj['products'] %}
+        <tr>
+          <td>{{p['total'].split(' ')[0]}}</td>
+          <td>{{p['quantity']}}</td>
+          <td>{{p['price']}}</td>
+          <td>{{p['name']}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <hr style="border: black .3px solid;">
+  {% endif %}
+<div class="infoss" style="text-align: center;">
+    {% set TOTAL = obj['totalS'] + obj['totalP'] %}
+  <span class="mr-1" style="font-size: 13px; margin-top: -5px;">اجمالي : {{TOTAL}}ج</span>
+  <span class="mr-1" style="font-size: 13px; margin-top: -5px; font-weight: 900;">خصم : {{obj['dis']}}ج</span>
+  <span class="mr-1" style="font-size: 13px; margin-top: -5px;">صافي : {{obj['total']}}ج</span>
+</div>
+  <hr style="border: black .3px solid;">
+  <div class="notes">
+      {% for m in msgg %}
+    <p class="mr-1" style="text-align: right; font-size: 13px; margin-top: -5px;">{{m['msg']}}</p>
+      {% endfor %}
+  </div>
+  </div>
