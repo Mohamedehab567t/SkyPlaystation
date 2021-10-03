@@ -187,19 +187,22 @@ class rState {
     //Building Recipt
     buildMyRecipt(obj){
         // get History
-        let history =  $('#movement')
-        $(history).empty()
-        obj['history'].forEach(e => {
-            let Paragraph = document.createElement('p')
-            $(Paragraph).attr('class' , 'one-record')
-            $(Paragraph).text(e)
-            $(history).append(Paragraph)
-        });
+      //  let history =  $('#movement')
+      //  $(history).empty()
+      //  obj['history'].forEach(e => {
+      //      let Paragraph = document.createElement('p')
+      //      $(Paragraph).attr('class' , 'one-record')
+      //      $(Paragraph).text(e)
+      //      $(history).append(Paragraph)
+      //  });
 
         // get time
         let consumedTime = $('#consumedTime')
         let currentDate = new Date()
-        $(consumedTime).text(this.returnInHours(Date.parse(currentDate) , Date.parse(obj['startTime'])) + ' ساعة ') 
+        let Dobj = this.returnInHours(Date.parse(currentDate) , Date.parse(obj['startTime']))
+        let NowPrice = parseFloat(Dobj['H']) * parseInt(obj['price'])
+        obj['totalHours'] =  NowPrice
+        $(consumedTime).text(Dobj['h'] + ' ساعة ' +Dobj['m'] + ' دقيقة'+' = ' + NowPrice.toFixed(0) + ' ج ') 
 
         //set Discount
         $('#Bdiscount').attr('class' , '')
@@ -229,7 +232,7 @@ class rState {
         $('#alarm').data('c' , obj['sid'])
         $('#disalarm').data('c' , '')
         $('#disalarm').data('c' , obj['sid'])
-
+        
         if(obj['type'] != undefined){
             if(obj['type'] == 'withTime'){
                 $('#disalarm').attr('style' , 'display:inline !important')
@@ -238,11 +241,15 @@ class rState {
                 $('#alarm').attr('style' , 'display:inline !important')
                 $('#disalarm').attr('style' , 'display:none !important')
             }
+        }else{
+            $('#alarm').attr('style' , 'display:inline !important')
+            $('#disalarm').attr('style' , 'display:none !important')
         }
     } 
     returnInHours(n1 , n2){
-        let hours = (n1 - n2) / 1000 / 60 / 60
-        return hours.toFixed(1)
+        let hours = ((n1 - n2) / 1000 / 60)  / 60
+        let minutes = ((n1 - n2) / 1000 / 60) % 60
+        return {'h' : parseInt(hours) , 'm' : minutes.toFixed(0) , 'H' : hours.toFixed(3)}
     }
 
 
@@ -378,21 +385,22 @@ class rState {
         let allNum = $('#allNum')
         let discountNum = $('#discountNum')
         let price = obj['price']
-        let NowPrice = parseFloat($(consumedTime).text()) * parseInt(price)
+        let Dobj = this.returnInHours(Date.parse(new Date()) , Date.parse(obj['startTime']))
+        let NowPrice = parseFloat(Dobj['H']) * parseInt(price)
         obj['totalHours'] =  NowPrice
         obj['totalnum'] = obj['totalHours'] + obj['totalProducts'] - obj['discount']
         let AllTotal = obj['totalHours'] + obj['totalProducts']
         localStorage.setItem('R'+obj['sid'] , JSON.stringify(obj))
-        $(totlaNum).text('صافي : '+obj['totalnum']+'ج')
-        $(allNum).text('اجمالي : '+AllTotal+'ج')
-        $(discountNum).text('خصم : '+obj['discount']+'ج')
+        $(totlaNum).text('صافي : '+obj['totalnum'].toFixed(0)+'ج')
+        $(allNum).text('اجمالي : '+AllTotal.toFixed(0)+'ج')
+        $(discountNum).text('خصم : '+obj['discount'].toFixed(0)+'ج')
         this.setRest(obj)
     }
     setRest(obj){
         obj['restnum'] = obj['totalnum'] - obj['purchased']
         $('#Bpurchase').attr('class' , '')
         $('#Bpurchase').addClass('R'+obj['sid'])
-        $('#restNum').text('باقي : '+obj['restnum'] + 'ج')
+        $('#restNum').text('باقي : '+obj['restnum'].toFixed(0) + 'ج')
     }
 
     //SET CALC FALSE
@@ -422,12 +430,14 @@ class rState {
             'products' : obj['products'],
             'ServiceID' : obj['sid']
         }
+        if(obj['discountR'] != undefined){
+            ReciptObj['discountR'] = obj['discountR']
+        }
         return ReciptObj
         }
 
         //WhatsAfterReciptEnd
         afterEndOfRecipt(id){
-            
             localStorage.removeItem('R'+id)
             localStorage.setItem('D'+id , 'available')
             $('#BackDrop').attr('style' , 'display : none !important')
@@ -435,6 +445,9 @@ class rState {
             this.ChangeState($('.DeviceRecipt'))
             this.refreshDiv('TableCon' , 'S-Table')
             this.refreshDiv('BOX' , 'Box')
+            this.refreshDiv('BUY' , 'Buy')
+            this.refreshDiv('TOTAL' , 'Total')
             this.refreshDiv('RCONT' , 'Rcont')
+            this.refreshDiv('tableConR' , 'twoTabels')
         }
 }

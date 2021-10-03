@@ -29,9 +29,12 @@ $( window ).on( 'hashchange', function( e ) {
             location.hash = 'excel'
         }else{
             urlController.refreshDiv('TableCon' , 'S-Table')
+            urlController.refreshDiv('BOX' , 'Box')
+            urlController.refreshDiv('BUY' , 'Buy')
+            urlController.refreshDiv('TOTAL' , 'Total')
         }
-    }else if (onChangeUrl == 'excel'){
-        urlController.refreshDiv('tableConR' , 'twoTabels')
+    }else if (onChangeUrl == 'excel' ||onChangeUrl == 'excelBuy' ){
+        urlController.refreshDiv('tableConR2' , 'twoTabels2')
     }
 });
 

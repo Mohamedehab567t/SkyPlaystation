@@ -2,12 +2,11 @@ from time import strftime
 from playstation import app
 from playstation.Objects.Design.frontend import Front as fr
 from .forms import Login
-from .functions import AddReciptToDataBase , makeAnotherShift,ReturnReport, getTotalOfThis
+from .functions import AddReciptToDataBase , makeAnotherShift,ReturnReport2,ReturnReport, getTotalOfThis ,getTotalOfbuy, expensesOperations
 from flask import render_template , redirect , url_for,request, session
-from .models import Shifts, services , products,users, msg , Recipts
+from .models import Shifts, services , products,users, msg , Recipts , expenses
 import random
-import datetime
-import dateutil.parser
+
 
 @app.route('/' , methods=['POST','GET'])
 @app.route('/login' , methods=['POST','GET'])
@@ -32,20 +31,17 @@ def login():
 def dashboard():
     filesCss = fr.Getcss('dashboard')
     filesJs = fr.Getjs('helpers/url.js','routes.js','components/service.js','components/product.js','settings.js','helpers/reciptState.js','reciptandservics.js',
-                       'helpers/DateFormatting.js','components/message.js' , 'excel.js')
+                       'helpers/DateFormatting.js','components/message.js' , 'excel.js' , 'components/buy.js')
     Sservices = list(services.find())
     Pproducts = products.find()
     Sshifts = list(Shifts.find())
-    Today = datetime.date.today()
-    Tommorow = Today + datetime.timedelta(days=1)
-    r = list(Recipts.find({'serachDate' : {
-        '$lt': dateutil.parser.parse(str(Tommorow)),
-        '$gte': dateutil.parser.parse(str(Today))
-    }}))
     lastShift = Sshifts[len(Sshifts) - 1]
+    r = list(Recipts.find({'ShiftNumber' : lastShift['_id']}))
     user_name = users.find_one({'_id' : session['login_user']['id']})['username']
     totalInReport = getTotalOfThis(r , 'total' , 'dis')
-    return render_template('dashboard.html', user_name=user_name,totalInReport=totalInReport ,r=r,css=filesCss, lastShift=lastShift ,js=filesJs, Service = Sservices , Products=Pproducts)
+    expense = list(expenses.find())
+    expensesTotal = getTotalOfbuy(expense , 'v')
+    return render_template('dashboard.html',expense=expense, expensesTotal=expensesTotal ,user_name=user_name,totalInReport=totalInReport ,r=r,css=filesCss, lastShift=lastShift ,js=filesJs, Service = Sservices , Products=Pproducts)
 
 
 @app.route('/Excel' , methods=['POST','GET'])
@@ -55,6 +51,12 @@ def Excel():
     totalInReport = getTotalOfThis(val, 'total' , 'dis')
     return render_template('components/Reports.html', totalInReport=totalInReport , r = val)
 
+@app.route('/Excel2' , methods=['POST','GET'])
+def Excel2():
+    valOBJ = request.get_json()
+    val = ReturnReport2(valOBJ)
+    expensesTotal = getTotalOfbuy(val, 'v')
+    return render_template('components/expenses.html', expensesTotal=expensesTotal , r = val)
 
 @app.route('/AddService' , methods=['POST','GET'])
 def addService():
@@ -82,7 +84,13 @@ def addMessage():
     msg.insert_one(Message)
     return 'تم اضافة الرسالة'
 
-
+@app.route('/AddBuy' , methods=['POST','GET'])
+def AddBuy():
+    expense = request.get_json()
+    print(expense)
+    expense['_id'] = random.randint(0,100000)
+    expensesOperations(expense)
+    return 'تم اضافة المصروف'
 
 @app.route('/lockDevice' , methods=['POST','GET'])
 def lockDevice():
@@ -133,3 +141,5 @@ def EndShift():
 def logout():
     session.pop('login_user', None)
     return redirect(url_for('login'))
+
+from playstation import api

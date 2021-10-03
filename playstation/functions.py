@@ -1,4 +1,4 @@
-from .models import users,services , Shifts ,Recipts,msg
+from .models import users,services , Shifts ,Recipts,msg,expenses
 from wtforms.validators import ValidationError
 from flask import render_template
 import random
@@ -48,7 +48,7 @@ def makeAnotherShift():
     Sshifts = list(Shifts.find())
     lastShift = Sshifts[len(Sshifts) - 1]
     lastID = lastShift['_id']
-    Shifts.insert_one({'_id' : lastID + 1 , 'box' : 0 , 'R_count' : 0})
+    Shifts.insert_one({'_id' : lastID + 1 , 'box' : 0 , 'R_count' : 0 , 'buy' : 0})
     
     
 def ReturnReport(val):
@@ -68,6 +68,25 @@ def ReturnReport(val):
     }))
     return Report
 
+def ReturnReport2(val):
+    AndExpressionForS = []
+    for obj in val:
+        if 'serachDate' in obj:
+            expression = {str(obj): {
+            '$lt': dateutil.parser.parse(val[obj][1]),
+            '$gte': dateutil.parser.parse(val[obj][0])
+            }}
+            AndExpressionForS.append(expression)
+        else :
+            expression = {str(obj): val[obj]}
+            AndExpressionForS.append(expression)
+    print(AndExpressionForS)
+    Report = list(expenses.find({
+        '$and' : AndExpressionForS
+    }))
+    print(Report)
+    return Report
+
 def getTotalOfThis(arr , Val1 , Val2):
     total = {}
     total['safy'] = 0
@@ -77,3 +96,26 @@ def getTotalOfThis(arr , Val1 , Val2):
         total['dis'] += t[Val2]
     total['total'] = total['safy'] + total['dis']
     return total
+
+def getTotalOfbuy(arr , Val1):
+    total = {}
+    total['t'] = 0
+    for t in arr:
+        total['t'] += int(t[Val1])
+    return total
+
+def expensesOperations(ex):
+    Sshifts = list(Shifts.find())
+    lastShift = Sshifts[len(Sshifts) - 1]
+    lastShiftBox = lastShift['box']
+    lastShiftBuy = lastShift['buy']
+    Shifts.update_one({'_id' : lastShift['_id']}, {
+        '$set' : {
+            'box' : lastShiftBox - int(ex['v']),
+            'buy' : int(ex['v']) + lastShiftBuy
+        }
+    })
+    ex['s'] = dateutil.parser.parse(ex['s'])
+    ex['sn'] = lastShift['_id']
+    ex['v'] = int(ex['v'])
+    expenses.insert_one(ex)

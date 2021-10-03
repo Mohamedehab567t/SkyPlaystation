@@ -9,21 +9,22 @@ body {
   margin: auto;
 }
 
-#services .DeviceRecipt .calc .TimeAndSetting .setting .oneLine button {
+#services .DeviceRecipt .history .TimeAndSetting .setting .oneLine button {
   outline: none;
   border: none;
-  width: 60px;
-  padding: 5px;
+  width: 50px;
+  padding: 3px;
   color: white;
   background-color: #0DC100;
   border-radius: 5px;
   margin: 2px auto;
+  font-size: 0.8rem;
 }
-#services .DeviceRecipt .calc .TimeAndSetting .setting .oneLine button:hover {
+#services .DeviceRecipt .history .TimeAndSetting .setting .oneLine button:hover {
   background-color: #0c7704;
 }
 
-#excel #tableConR table, #BackDrop .one .fatora #fatora_child table, #services .DeviceRecipt .calc table, #services .DeviceRecipt .items table {
+#excel #tableConR table, #BackDrop .one .fatora #fatora_child table, #excelBuy #tableConR2 table, #services .DeviceRecipt .calc table, #services .DeviceRecipt .items table {
   width: 99%;
   border-collapse: collapse;
   color: black;
@@ -31,7 +32,7 @@ body {
   text-align: center;
   background-color: white;
 }
-#excel #tableConR table #excel #tableConR table, #excel #tableConR table table, #excel #tableConR table #excel #tableConR td, #excel #tableConR table td, #excel #tableConR table #excel #tableConR th, #excel #tableConR table th, #excel #tableConR table #BackDrop .one .fatora #fatora_child table, #BackDrop .one .fatora #fatora_child #excel #tableConR table table, #excel #tableConR #BackDrop .one .fatora #fatora_child table table, #BackDrop .one .fatora #fatora_child table table, #excel #tableConR table #BackDrop .one .fatora #fatora_child td, #BackDrop .one .fatora #fatora_child #excel #tableConR table td, #excel #tableConR #BackDrop .one .fatora #fatora_child table td, #BackDrop .one .fatora #fatora_child table td, #excel #tableConR table #BackDrop .one .fatora #fatora_child th, #BackDrop .one .fatora #fatora_child #excel #tableConR table th, #excel #tableConR #BackDrop .one .fatora #fatora_child table th, #BackDrop .one .fatora #fatora_child table th, #services .DeviceRecipt .calc table #excel #tableConR table, #excel #tableConR #services .DeviceRecipt .calc table table, #services .DeviceRecipt .calc table #excel #tableConR td, #excel #tableConR #services .DeviceRecipt .calc table td, #services .DeviceRecipt .calc table #excel #tableConR th, #excel #tableConR #services .DeviceRecipt .calc table th, #services .DeviceRecipt .calc table #BackDrop .one .fatora #fatora_child table, #services .DeviceRecipt .calc table #BackDrop .one .fatora #fatora_child td, #services .DeviceRecipt .calc table #BackDrop .one .fatora #fatora_child th, #excel #tableConR table #services .DeviceRecipt .calc table, #services .DeviceRecipt .calc table #services .DeviceRecipt .calc table, #services .DeviceRecipt .calc #excel #tableConR table table, #excel #tableConR #services .DeviceRecipt .calc table table, #services .DeviceRecipt .calc table table, #excel #tableConR table #services .DeviceRecipt .calc td, #services .DeviceRecipt .calc table #services .DeviceRecipt .calc td, #services .DeviceRecipt .calc #excel #tableConR table td, #excel #tableConR #services .DeviceRecipt .calc table td, #services .DeviceRecipt .calc table td, #excel #tableConR table #services .DeviceRecipt .calc th, #services .DeviceRecipt .calc table #services .DeviceRecipt .calc th, #services .DeviceRecipt .calc #excel #tableConR table th, #excel #tableConR #services .DeviceRecipt .calc table th, #services .DeviceRecipt .calc table th, #excel #tableConR table #services .DeviceRecipt .items table, #services .DeviceRecipt .calc table #services .DeviceRecipt .items table, #services .DeviceRecipt .items #excel #tableConR table table, #excel #tableConR #services .DeviceRecipt .items table table, #services .DeviceRecipt .items .calc table table, #services .DeviceRecipt .calc .items table table, #excel #tableConR table #services .DeviceRecipt .items th, #services .DeviceRecipt .calc table #services .DeviceRecipt .items th, #services .DeviceRecipt .items #excel #tableConR table th, #excel #tableConR #services .DeviceRecipt .items table th, #services .DeviceRecipt .items .calc table th, #services .DeviceRecipt .calc .items table th, #excel #tableConR table #services .DeviceRecipt .items td, #services .DeviceRecipt .calc table #services .DeviceRecipt .items td, #services .DeviceRecipt .items #excel #tableConR table td, #excel #tableConR #services .DeviceRecipt .items table td, #services .DeviceRecipt .items .calc table td, #services .DeviceRecipt .calc .items table td, #services .DeviceRecipt .items table #excel #tableConR table, #excel #tableConR #services .DeviceRecipt .items table table, #services .DeviceRecipt .items table #excel #tableConR td, #excel #tableConR #services .DeviceRecipt .items table td, #services .DeviceRecipt .items table #excel #tableConR th, #excel #tableConR #services .DeviceRecipt .items table th, #services .DeviceRecipt .items table #BackDrop .one .fatora #fatora_child table, #services .DeviceRecipt .items table #BackDrop .one .fatora #fatora_child td, #services .DeviceRecipt .items table #BackDrop .one .fatora #fatora_child th, #services .DeviceRecipt .items table .calc table, #services .DeviceRecipt .calc .items table table, #services .DeviceRecipt .items table .calc td, #services .DeviceRecipt .calc .items table td, #services .DeviceRecipt .items table .calc th, #services .DeviceRecipt .calc .items table th, #services .DeviceRecipt .items table table, #services .DeviceRecipt .items table th, #services .DeviceRecipt .items table td {
+#excel #tableConR table #excel #tableConR table, #excel #tableConR table table, #excel #tableConR table #excel #tableConR td, #excel #tableConR table td, #excel #tableConR table #excel #tableConR th, #excel #tableConR table th, #excel #tableConR table #BackDrop .one .fatora #fatora_child table, #BackDrop .one .fatora #fatora_child #excel #tableConR table table, #excel #tableConR #BackDrop .one .fatora #fatora_child table table, #BackDrop .one .fatora #fatora_child table table, #excel #tableConR table #BackDrop .one .fatora #fatora_child td, #BackDrop .one .fatora #fatora_child #excel #tableConR table td, #excel #tableConR #BackDrop .one .fatora #fatora_child table td, #BackDrop .one .fatora #fatora_child table td, #excel #tableConR table #BackDrop .one .fatora #fatora_child th, #BackDrop .one .fatora #fatora_child #excel #tableConR table th, #excel #tableConR #BackDrop .one .fatora #fatora_child table th, #BackDrop .one .fatora #fatora_child table th, #excelBuy #tableConR2 table #BackDrop .one .fatora #fatora_child table, #excelBuy #tableConR2 table #BackDrop .one .fatora #fatora_child td, #excelBuy #tableConR2 table #BackDrop .one .fatora #fatora_child th, #excel #tableConR table #excelBuy #tableConR2 table, #excelBuy #tableConR2 #excel #tableConR table table, #excel #tableConR #excelBuy #tableConR2 table table, #excelBuy #tableConR2 table table, #excel #tableConR table #excelBuy #tableConR2 td, #excelBuy #tableConR2 #excel #tableConR table td, #excel #tableConR #excelBuy #tableConR2 table td, #excelBuy #tableConR2 table td, #excel #tableConR table #excelBuy #tableConR2 th, #excelBuy #tableConR2 #excel #tableConR table th, #excel #tableConR #excelBuy #tableConR2 table th, #excelBuy #tableConR2 table th, #services .DeviceRecipt .calc table #excel #tableConR table, #excel #tableConR #services .DeviceRecipt .calc table table, #services .DeviceRecipt .calc table #excel #tableConR td, #excel #tableConR #services .DeviceRecipt .calc table td, #services .DeviceRecipt .calc table #excel #tableConR th, #excel #tableConR #services .DeviceRecipt .calc table th, #services .DeviceRecipt .calc table #BackDrop .one .fatora #fatora_child table, #services .DeviceRecipt .calc table #BackDrop .one .fatora #fatora_child td, #services .DeviceRecipt .calc table #BackDrop .one .fatora #fatora_child th, #services .DeviceRecipt .calc table #excelBuy #tableConR2 table, #services .DeviceRecipt .calc table #excelBuy #tableConR2 td, #services .DeviceRecipt .calc table #excelBuy #tableConR2 th, #excel #tableConR table #services .DeviceRecipt .calc table, #services .DeviceRecipt .calc #excel #tableConR table table, #excel #tableConR #services .DeviceRecipt .calc table table, #services .DeviceRecipt .calc table table, #excel #tableConR table #services .DeviceRecipt .calc td, #services .DeviceRecipt .calc #excel #tableConR table td, #excel #tableConR #services .DeviceRecipt .calc table td, #services .DeviceRecipt .calc table td, #excel #tableConR table #services .DeviceRecipt .calc th, #services .DeviceRecipt .calc #excel #tableConR table th, #excel #tableConR #services .DeviceRecipt .calc table th, #services .DeviceRecipt .calc table th, #excel #tableConR table #services .DeviceRecipt .items table, #services .DeviceRecipt .items #excel #tableConR table table, #excel #tableConR #services .DeviceRecipt .items table table, #excel #tableConR table #services .DeviceRecipt .items th, #services .DeviceRecipt .items #excel #tableConR table th, #excel #tableConR #services .DeviceRecipt .items table th, #excel #tableConR table #services .DeviceRecipt .items td, #services .DeviceRecipt .items #excel #tableConR table td, #excel #tableConR #services .DeviceRecipt .items table td, #services .DeviceRecipt .items table #excel #tableConR table, #excel #tableConR #services .DeviceRecipt .items table table, #services .DeviceRecipt .items table #excel #tableConR td, #excel #tableConR #services .DeviceRecipt .items table td, #services .DeviceRecipt .items table #excel #tableConR th, #excel #tableConR #services .DeviceRecipt .items table th, #services .DeviceRecipt .items table #BackDrop .one .fatora #fatora_child table, #services .DeviceRecipt .items table #BackDrop .one .fatora #fatora_child td, #services .DeviceRecipt .items table #BackDrop .one .fatora #fatora_child th, #services .DeviceRecipt .items table #excelBuy #tableConR2 table, #services .DeviceRecipt .items table #excelBuy #tableConR2 td, #services .DeviceRecipt .items table #excelBuy #tableConR2 th, #services .DeviceRecipt .items table table, #services .DeviceRecipt .items table th, #services .DeviceRecipt .items table td {
   border: 0.5px solid #aaaaaa;
 }
 
@@ -143,10 +144,11 @@ body {
 .btns {
   display: flex;
   gap: 5px;
-  justify-content: center;
+  justify-content: flex-end;
 }
 .btns a {
   font-size: 0.7rem;
+  margin-left: 15px;
 }
 @media screen and (max-width:400px) {
   .btns {
@@ -160,13 +162,18 @@ body {
 }
 
 #services {
-  flex: 5;
+  flex: 12;
   height: 100vh;
   background-color: #1A1E2B;
 }
+#services .UpNav {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
 #services .table {
   display: grid;
-  grid-template-columns: repeat(8, 110px);
+  grid-template-columns: repeat(10, 90px);
   gap: 8px;
   width: fit-content;
   margin: 10px auto;
@@ -174,10 +181,10 @@ body {
   scrollbar-color: red;
 }
 #services .table .device {
-  background-color: #93FB96;
+  background-color: #FF163E;
   padding: 5px;
   border-radius: 0px 5px 0px 0px;
-  height: 100px;
+  height: 80px;
   cursor: pointer;
   position: relative;
   opacity: 1;
@@ -195,8 +202,8 @@ body {
   margin: 3px auto;
 }
 #services .table .device .img img {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
 }
 #services .table .device P {
   text-align: center;
@@ -222,10 +229,11 @@ body {
 }
 #services .DeviceRecipt {
   border-top: gray 0.5px solid;
-  height: 40%;
+  height: 45%;
   display: flex;
-  position: relative;
-  margin-top: 100px;
+  position: absolute;
+  bottom: 0;
+  width: 92.1%;
 }
 #services .DeviceRecipt .calc {
   flex: 3;
@@ -247,73 +255,68 @@ body {
 #services .DeviceRecipt .history {
   flex: 2;
   border-left: gray 0.5px solid;
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
 }
-#services .DeviceRecipt .history .one-record {
-  font-size: 14px;
-  text-align: center;
-  color: white;
-  margin-bottom: 3px;
-}
-#services .DeviceRecipt .calc .TimeAndSetting {
+#services .DeviceRecipt .history .TimeAndSetting {
   display: flex;
+  flex-direction: column;
 }
-#services .DeviceRecipt .calc .TimeAndSetting .setting {
+#services .DeviceRecipt .history .TimeAndSetting .setting {
   flex: 2;
 }
-#services .DeviceRecipt .calc .TimeAndSetting .setting .oneLine {
+#services .DeviceRecipt .history .TimeAndSetting .setting .oneLine {
   text-align: start;
   margin-bottom: 5px;
 }
-#services .DeviceRecipt .calc .TimeAndSetting .setting .oneLine span {
+#services .DeviceRecipt .history .TimeAndSetting .setting .oneLine span {
   margin-left: 5px;
   margin-right: 5px;
   color: white;
 }
-#services .DeviceRecipt .calc .TimeAndSetting .setting .oneLine input {
+#services .DeviceRecipt .history .TimeAndSetting .setting .oneLine input {
   width: 60px;
   outline: none;
 }
-#services .DeviceRecipt .calc .TimeAndSetting .time {
+#services .DeviceRecipt .history .TimeAndSetting .time {
   flex: 1;
 }
-#services .DeviceRecipt .calc .TimeAndSetting .time p {
+#services .DeviceRecipt .history .TimeAndSetting .time p {
   color: white;
   width: fit-content;
   margin: 3px auto;
 }
-#services .DeviceRecipt .calc .reciptInformation .reciptEnd {
+#services .DeviceRecipt .history .reciptInformation .reciptEnd {
   display: flex;
   gap: 8px;
   justify-content: center;
   padding: 0px 60px;
 }
-#services .DeviceRecipt .calc .reciptInformation .reciptEnd button {
+#services .DeviceRecipt .history .reciptInformation .reciptEnd button {
   flex: 1;
 }
-#services .DeviceRecipt .calc .reciptInformation .spanCon {
+#services .DeviceRecipt .history .reciptInformation .spanCon {
   display: grid;
   grid-template-columns: repeat(2, 40%);
   justify-content: center;
   text-align: center;
   gap: 5px;
 }
-#services .DeviceRecipt .calc .reciptInformation .spanCon span {
+#services .DeviceRecipt .history .reciptInformation .spanCon span {
   color: white;
   padding: 3px;
   border: white 0.5px solid;
 }
-#services .DeviceRecipt .calc .reciptInformation .spanCon #totlaNum {
+#services .DeviceRecipt .history .reciptInformation .spanCon #totlaNum {
   background-color: #4b4bff;
 }
-#services .DeviceRecipt .calc .reciptInformation .spanCon #allNum {
+#services .DeviceRecipt .history .reciptInformation .spanCon #allNum {
   background-color: #0909a1;
 }
-#services .DeviceRecipt .calc .reciptInformation .spanCon #restNum {
+#services .DeviceRecipt .history .reciptInformation .spanCon #restNum {
   background-color: #096609;
 }
-#services .DeviceRecipt .calc .reciptInformation .spanCon #discountNum {
+#services .DeviceRecipt .history .reciptInformation .spanCon #discountNum {
   background-color: #f01b1b;
 }
 #services .DeviceRecipt #StartRecipt {
@@ -331,8 +334,68 @@ body {
   align-self: center;
 }
 
+#reason {
+  background-color: white;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  transform: translate(-50%, -50%);
+}
+
+#excelBuy {
+  flex: 12;
+  color: white;
+  overflow-y: auto;
+}
+@media screen and (max-width:400px) {
+  #excelBuy {
+    overflow-y: unset;
+  }
+}
+@media screen and (min-width:401px) and (max-width:768px) {
+  #excelBuy {
+    overflow-y: unset;
+  }
+}
+#excelBuy .serach {
+  display: grid;
+  width: 50%;
+  grid-template-columns: repeat(3, 35%);
+  gap: 10px;
+  margin: 3px auto;
+}
+@media screen and (max-width:400px) {
+  #excelBuy .serach {
+    grid-template-columns: repeat(1, 100%);
+  }
+}
+@media screen and (min-width:401px) and (max-width:768px) {
+  #excelBuy .serach {
+    grid-template-columns: repeat(1, 100%);
+  }
+}
+#excelBuy #tableConR2 {
+  width: 70%;
+  margin: 3px auto;
+}
+#excelBuy #tableConR2 table {
+  font-size: 12px !important;
+}
+@media screen and (max-width:400px) {
+  #excelBuy #tableConR2 table {
+    font-size: 10px !important;
+  }
+}
+@media screen and (min-width:401px) and (max-width:768px) {
+  #excelBuy #tableConR2 table {
+    font-size: 10px !important;
+  }
+}
+
 #S {
-  flex: 5;
+  flex: 12;
   color: white;
 }
 #S .settingContainer {
@@ -378,9 +441,32 @@ body {
   height: 48px;
   margin: auto;
 }
-#S .Addmsg {
-  width: 80%;
+#S .secondFlexInSettings {
+  display: flex;
+  padding: 5px;
+  gap: 5px;
+}
+@media screen and (max-width:400px) {
+  #S .secondFlexInSettings {
+    flex-direction: column;
+  }
+}
+@media screen and (min-width:401px) and (max-width:768px) {
+  #S .secondFlexInSettings {
+    flex-direction: column;
+  }
+}
+#S .secondFlexInSettings .Addmsg {
+  flex: 1;
   margin: 2px auto;
+  padding: 5px;
+  border: white 1px solid;
+}
+#S .secondFlexInSettings .Addbuy {
+  flex: 1;
+  margin: 2px auto;
+  padding: 5px;
+  border: white 1px solid;
 }
 
 #BackDrop {
@@ -464,7 +550,7 @@ body {
 }
 
 #excel {
-  flex: 5;
+  flex: 12;
   color: white;
   overflow-y: auto;
 }

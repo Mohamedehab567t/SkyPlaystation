@@ -21,6 +21,13 @@ $('#Mmsg').on('submit' , function(e) {
 })
 
 
+var Buy = new BuyComponent('add' , null)
+$('#Bbuy').on('submit' , function(e) {
+    Buy.AddBuy($(this))
+    e.preventDefault()
+})
+
+
 
 
 

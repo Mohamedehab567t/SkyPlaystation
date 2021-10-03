@@ -94,9 +94,10 @@ body{
     .btns{
         display: flex;
         gap: 5px;
-        justify-content: center;
+        justify-content: flex-end;
         a{
             font-size: .7rem;
+            margin-left: 15px;
         }
         @media #{$smallmobile} {
             margin-bottom : 5px;
@@ -106,22 +107,27 @@ body{
         }
     }
 #services{
-    flex: 5;
+    flex: 12;
     height: 100vh;
     background-color: $darkblue;
+    .UpNav{
+        display: flex;
+        justify-content: center;
+        margin: 0;
+    }
     .table{
         display : grid;
-        grid-template-columns: repeat(8 , 110px);
+        grid-template-columns: repeat(10 , 90px);
         gap: 8px;
         width: fit-content;
         margin: 10px auto;
         overflow-y: auto ;
         scrollbar-color: red;
         .device{
-            background-color: $notactive;
+            background-color: #FF163E;
             padding: 5px;
             border-radius: 0px 5px 0px 0px;
-            height: 100px;
+            height: 80px;
             cursor: pointer;
             position: relative;
             opacity: 1;
@@ -137,8 +143,8 @@ body{
                 width: fit-content;
                 margin: 3px auto;
                 img{
-                    width: 50px;
-                    height: 50px;
+                    width: 30px;
+                    height: 30px;
                 }
             }
             P{
@@ -167,10 +173,11 @@ body{
     }
     .DeviceRecipt{
         border-top: gray .5px solid;
-        height: 40%;
+        height: 45%;
         display: flex;
-        position: relative;
-        margin-top: 100px;
+        position: absolute;
+        bottom: 0;
+        width: 92.1%;
         .calc{
             flex: 3;
             border-left: gray .5px solid;
@@ -197,18 +204,11 @@ body{
         .history{
             flex: 2;
             border-left: gray .5px solid;
-            overflow-y: auto ;
+            overflow-y: hidden ;
             overflow-x: hidden;
-            .one-record{
-                font-size: 14px;
-                text-align: center;
-                color: white;
-                margin-bottom: 3px;
-            }
-        }
-        .calc{
             .TimeAndSetting{
                 display: flex;
+                flex-direction: column;
                 .setting{
                     flex: 2;
                     .oneLine{
@@ -237,14 +237,7 @@ body{
                     }
                 }
             }
-            table, td, th {
-                @extend %t-content;
-              }
-              
-              table {
-                @extend %table;
-              }
-              .reciptInformation{
+            .reciptInformation{
                 .reciptEnd{
                     display: flex;
                     gap: 8px;
@@ -279,7 +272,15 @@ body{
                 }
             }
               }
-
+        }
+        .calc{
+            table, td, th {
+                @extend %t-content;
+              }
+              
+              table {
+                @extend %table;
+              }
         }
         #StartRecipt{
             position: absolute;
@@ -297,8 +298,59 @@ body{
         }
     }
 }
+#reason{
+    background-color: white;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    transform: translate(-50% , -50%);
+}
+#excelBuy{
+    flex: 12;
+    color: white;
+    overflow-y: auto;
+    @media #{$smallmobile} {
+        overflow-y: unset;
+    }
+      @media #{$bigmobile} {
+        overflow-y: unset;
+    }
+    .serach{
+        display: grid;
+        width : 50%;
+        grid-template-columns: repeat(3 , 35%);
+        gap: 10px;
+        margin: 3px auto;
+        @media #{$smallmobile} {
+            grid-template-columns: repeat(1 , 100%);
+        }
+          @media #{$bigmobile} {
+            grid-template-columns: repeat(1 , 100%);
+        }
+    }
+    #tableConR2{
+        width: 70%;
+        margin: 3px auto;
+        table, td, th {
+            @extend %t-content;
+          }
+        table{
+            font-size: 12px !important;
+            @media #{$smallmobile} {
+            font-size: 10px !important;
+            }
+              @media #{$bigmobile} {
+            font-size: 10px !important;
+            }
+            @extend %table;
+        }
+    }
+
+}
 #S{
-    flex: 5;
+    flex: 12;
     color: white;
     .settingContainer{
         display: flex;
@@ -339,10 +391,30 @@ body{
             }
         }
     }
-    .Addmsg{
-        width: 80%;
-        margin: 2px auto;
+    .secondFlexInSettings{
+        display: flex;
+        padding: 5px;
+        gap: 5px;
+        @media #{$smallmobile} {
+            flex-direction: column;
+        }
+        @media #{$bigmobile} {
+            flex-direction: column  ;
+        }
+        .Addmsg{
+            flex: 1;
+            margin: 2px auto;
+            padding: 5px;
+            border: white 1px solid;
+        }
+        .Addbuy{
+            flex: 1;
+            margin: 2px auto;
+            padding: 5px;
+            border: white 1px solid;
+        }
     }
+
 }
 #BackDrop{
     position: absolute;
@@ -428,7 +500,7 @@ body{
     background-color : rgba(255,255,255,1);
 }
 #excel{
-    flex: 5;
+    flex: 12;
     color: white;
     overflow-y: auto;
     @media #{$smallmobile} {

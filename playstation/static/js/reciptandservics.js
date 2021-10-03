@@ -108,7 +108,18 @@ $('#Bdiscount').on('click' , function() {
         RState.buildMyRecipt(JSON.parse(localStorage.getItem(R)))
     }
     $('#discount').val('')
+    Why(R)
 })
+
+$('#WhyForm').on('submit' , function(e){
+    let R = $(this).find('button').attr('id')
+    let obj = JSON.parse(localStorage.getItem(R))
+    obj['discountR'] = $('#reasonField').val()
+    localStorage.setItem(R , JSON.stringify(obj))
+    $('#reason').attr('style' , 'display : none !important')
+    e.preventDefault()
+})
+
 
 $('#endOfRecipt').on('click' , function(){
     let objID = $(this).attr('class').split(' ')[2]
@@ -126,21 +137,19 @@ $("#NO").on('click' , function(){
     RState.afterEndOfRecipt(parseInt(id))
 })
 
-let IDinterVal;
+
 $('#alarm').on('click' ,function() {
     let tiemM = $('#time').val()
     if(tiemM != ''){
         let id = $(this).data('c')
         let obj = JSON.parse(localStorage.getItem('R'+id))
         let counter = $('#D'+id).find('.Counter')
-        $(counter).attr('style' , 'display : block !important')
         $(counter).text(tiemM * 60)
         obj['type'] = 'withTime'
         obj['remain'] = tiemM
-        localStorage.setItem('R'+id , JSON.stringify(obj))
         $('#disalarm').attr('style' , 'display:inline !important')
         $('#alarm').attr('style' , 'display:none !important')
-        IDinterVal = setInterval(StartTimer , 1000 , id , counter)
+        PushAlarm(id , counter , obj)
     }else{
         alert('ادخل الوقت')
     }
@@ -152,19 +161,22 @@ $('#alarm').on('click' ,function() {
 
 $('#disalarm').on('click' , function(){
     let id = $(this).data('c')
-    $('#D'+id).attr('style' , 'background-color:#FF163E;')
+    $('#D'+id).attr('style' , 'background-color:#93FB96;')
     let counter = $('#D'+id).find('.Counter')
-    $(counter).attr('style' , 'display : none !importnant')
     let obj = JSON.parse(localStorage.getItem('R'+id))
     obj['type'] = 'NoTime'
     $('#alarm').attr('style' , 'display:inline !important')
     $('#disalarm').attr('style' , 'display:none !important')
-    clearInterval(IDinterVal)
+    clearInterval(obj['TIMMER'])
     $(counter).text(0)
     localStorage.setItem('R'+id , JSON.stringify(obj))
 })
 
-
+function PushAlarm(id , counter , obj) {
+    let IDinterVal = setInterval(StartTimer , 1000 , id , counter );
+    obj['TIMMER'] = IDinterVal
+    localStorage.setItem('R'+id , JSON.stringify(obj))
+}
 
 function StartTimer(id , counter) {
 var text = parseInt($(counter).text())
@@ -180,9 +192,15 @@ $('#disalarm').prop('disabled' , false)
 RState.setCalc(false)
 let noti = document.getElementById("noti")
 noti.play()
-clearInterval(IDinterVal)
+clearInterval(obj['TIMMER'])
 $(counter).text(0)
 }
+}
+
+
+function Why(r) {
+    $('#reason').attr('style' , 'display:block !important')
+    $('#reason').find('button').attr('id' , r)
 }
 
 function printDiv() {

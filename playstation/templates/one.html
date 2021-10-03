@@ -9,15 +9,18 @@
 <body style="direction: rtl;">
     <h4 style="text-align: center; font-weight: 800; border: black 1px solid; padding: 8px; width: fit-content; margin: 0px auto;" class="mb-3">تفاصيل فاتورة رقم {{r['R_n']}}</h4>
     <div class="DETAIL mb-2" style="padding: 10px; border: black 1px solid; width: fit-content; margin: 0px auto;">
-    <p class="detail mt-1" style="font-weight: 600; text-align: center;">اجمالي الساعات : {{r['totalS']}}</p>
+    <p class="detail mt-1" style="font-weight: 600; text-align: center;">اجمالي الساعات : {{'%0.1f' % r['totalS']}}</p>
     <p class="detail mt-1" style="font-weight: 600; text-align: center;">اجمالي الاصناف : {{r['totalP']}}</p>
     <p class="detail mt-1" style="font-weight: 600; text-align: center;">الخصم : {{r['dis']}}</p>
-    <p class="detail mt-1" style="font-weight: 600; text-align: center;">اجمالي : {{r['total']}}</p>
+    <p class="detail mt-1" style="font-weight: 600; text-align: center;">اجمالي : {{'%0.1f' % r['total']}}</p>
     <p class="detail mt-1" style="font-weight: 600; text-align: center;">البداية : {{r['startDT']}} - {{r['startDD']}}</p>
     <p class="detail mt-1" style="font-weight: 600; text-align: center;">النهاية : {{r['endDT']}} - {{r['endDD']}}</p>
     <p class="detail mt-1" style="font-weight: 600; text-align: center;">اسم الجهاز : {{r['serviceName']}}</p>
     <p class="detail mt-1" style="font-weight: 600; text-align: center;">رقم الشيفت : {{r['ShiftNumber']}}</p>
     <p class="detail mt-1" style="font-weight: 600; text-align: center;">رقم الفاتورة : {{r['R_n']}}</p>
+    {% if r['discountR'] %}
+    <p class="detail mt-1" style="font-weight: 600; text-align: center;">سبب الخصم : {{r['discountR']}}</p>
+    {% endif %}
     </div>
     
     <h6 style="text-align: center; font-weight: 800; border: black 1px solid; padding: 8px; width: fit-content; margin: 0px auto;" class="mb-3">حركة الفاتورة</h6>

@@ -1,12 +1,13 @@
 %bu{
     outline: none;
     border: none;
-    width: 60px;
-    padding: 5px;
+    width: 50px;
+    padding: 3px;
     color: white;
     background-color: #0DC100;
     border-radius: 5px;
     margin: 2px auto;
+    font-size: 0.8rem;
     &:hover{
         background-color: #0c7704
     }

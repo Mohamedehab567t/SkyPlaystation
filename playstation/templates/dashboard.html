@@ -16,16 +16,12 @@
 <body style="direction: rtl;">
     <button id="GetMenue" style="color: white;"><i class="bi bi-menu-button"></i></button>
     <div class="menue">
+      <!--
         <div class="info">
-            <div class="letter">
-              {% set letters = user_name|list %}
-                <p><span>{{letters[0]}}</span></p>
-            </div>
             <div class="NandR">
-                <span>الاسم : <b>{{user_name}}</b> </span>
-                <span style="margin-top: -4px;" id="RCONT"> عدد الفواتير : <b id="Rcont">{{lastShift['R_count']}}</b></span>
             </div>
         </div>
+       -->
         <!--القائمة-->
         <div class="main-menue">
             <a href="#services" id="Aservices" class="m">
@@ -47,7 +43,6 @@
                     </g>
                   </svg>
                   </span>
-                <span class="title">فواتير</span>
             </a>
 
             <a href="#excel" id="Aexcel" class="m">
@@ -74,9 +69,34 @@
                         </g>
                       </svg>                      
                   </span>
-                <span class="title">التقارير</span>
             </a>
 
+
+            <a href="#excelBuy" id="AexcelBuy" class="m">
+              <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="#FF163E" width="20.733" height="28.907" viewBox="0 0 31.733 42.907">
+                      <g id="business-report" transform="translate(-66.67)">
+                        <g id="Group_6" data-name="Group 6" transform="translate(66.67)">
+                          <path id="Path_7" data-name="Path 7" d="M97.775,0H67.3a.628.628,0,0,0-.629.629V30.484a.629.629,0,0,0,1.257,0V1.257H97.146V5.208a.629.629,0,1,0,1.257,0V.629A.628.628,0,0,0,97.775,0Z" transform="translate(-66.67)" fill="##FF163E"/>
+                          <path id="Path_8" data-name="Path 8" d="M97.775,89.65a.628.628,0,0,0-.629.629v33.509H67.927v-8.233a.629.629,0,1,0-1.257,0v8.861a.628.628,0,0,0,.629.629H97.775a.628.628,0,0,0,.629-.629V90.279A.628.628,0,0,0,97.775,89.65Z" transform="translate(-66.67 -82.137)" fill="##FF163E"/>
+                          <path id="Path_9" data-name="Path 9" d="M99,102.847a4.861,4.861,0,1,0,4.861-4.861A4.867,4.867,0,0,0,99,102.847Zm4.861,3.6a3.6,3.6,0,0,1-.629-7.152v3.548a.628.628,0,0,0,.629.629h3.548A3.609,3.609,0,0,1,103.857,106.452Zm3.548-4.233h-2.92V99.3A3.613,3.613,0,0,1,107.406,102.219Z" transform="translate(-96.287 -89.774)" fill="##FF163E"/>
+                          <path id="Path_10" data-name="Path 10" d="M103.665,432.35a.628.628,0,0,0-.629.629v2.709a.628.628,0,0,0,.629.629h4.063a.628.628,0,0,0,.629-.629v-2.709a.628.628,0,0,0-.629-.629Zm3.435,2.709h-2.806v-1.452H107.1Z" transform="translate(-99.988 -396.117)" fill="##FF163E"/>
+                          <path id="Path_11" data-name="Path 11" d="M184.479,391.891h4.063a.628.628,0,0,0,.629-.629v-6.772a.629.629,0,0,0-.629-.629h-4.063a.629.629,0,0,0-.629.629v6.772A.628.628,0,0,0,184.479,391.891Zm.629-6.772h2.806v5.515h-2.806Z" transform="translate(-174.03 -351.693)" fill="##FF163E"/>
+                          <path id="Path_12" data-name="Path 12" d="M265.292,323.252a.628.628,0,0,0-.629.629v11.852a.628.628,0,0,0,.629.629h4.063a.628.628,0,0,0,.629-.629V323.881a.629.629,0,0,0-.629-.629Zm3.435,11.852H265.92V324.509h2.806Z" transform="translate(-248.07 -296.162)" fill="##FF163E"/>
+                          <path id="Path_13" data-name="Path 13" d="M350.171,286.324a.628.628,0,0,0,.629-.629v-2.217a.628.628,0,0,0-.629-.629h-4.063a.629.629,0,0,0-.629.629v15.237a.628.628,0,0,0,.629.629h4.063a.628.628,0,0,0,.629-.629V288.628a.629.629,0,0,0-1.257,0v9.459h-2.806v-13.98h2.806V285.7A.629.629,0,0,0,350.171,286.324Z" transform="translate(-322.115 -259.146)" fill="##FF163E"/>
+                          <path id="Path_14" data-name="Path 14" d="M181.86,32.325H168.316a.628.628,0,0,0-.629.629v2.709a.628.628,0,0,0,.629.629H181.86a.628.628,0,0,0,.629-.629V32.954a.629.629,0,0,0-.629-.629Zm-.629,2.709H168.944V33.582h12.288v1.452Z" transform="translate(-159.221 -29.616)" fill="##FF163E"/>
+                          <path id="Path_15" data-name="Path 15" d="M261.658,97.986H249.129a.629.629,0,0,0,0,1.257h12.529a.629.629,0,1,0,0-1.257Z" transform="translate(-233.262 -89.774)" fill="##FF163E"/>
+                          <path id="Path_16" data-name="Path 16" d="M261.658,131.658H249.129a.629.629,0,1,0,0,1.257h12.529a.629.629,0,1,0,0-1.257Z" transform="translate(-233.262 -120.625)" fill="##FF163E"/>
+                          <path id="Path_17" data-name="Path 17" d="M262.286,165.959a.629.629,0,0,0-.629-.629H249.129a.629.629,0,0,0,0,1.257h12.529A.629.629,0,0,0,262.286,165.959Z" transform="translate(-233.262 -151.475)" fill="##FF163E"/>
+                          <path id="Path_18" data-name="Path 18" d="M257.207,199.631a.629.629,0,0,0-.629-.629h-7.45a.629.629,0,0,0,0,1.257h7.45A.629.629,0,0,0,257.207,199.631Z" transform="translate(-233.262 -182.325)" fill="##FF163E"/>
+                          <path id="Path_19" data-name="Path 19" d="M124.185,248.5H112.757a.629.629,0,0,0,0,1.257h11.428a.629.629,0,1,0,0-1.257Z" transform="translate(-108.318 -227.675)" fill="##FF163E"/>
+                          <path id="Path_20" data-name="Path 20" d="M124.814,282.8a.629.629,0,0,0-.629-.629H112.757a.629.629,0,0,0,0,1.257h11.428A.629.629,0,0,0,124.814,282.8Z" transform="translate(-108.318 -258.525)" fill="##FF163E"/>
+                          <path id="Path_21" data-name="Path 21" d="M119.734,316.473a.629.629,0,0,0-.629-.629h-6.349a.629.629,0,0,0,0,1.257h6.349A.629.629,0,0,0,119.734,316.473Z" transform="translate(-108.318 -289.375)" fill="##FF163E"/>
+                        </g>
+                      </g>
+                    </svg>                      
+                </span>
+          </a>
 
             <a href="#S" id="AS" class="m">
                 <span class="icon">
@@ -87,29 +107,36 @@
                         </g>
                       </svg>
                   </span>
-                <span class="title">الاعدادت</span>
             </a>
 
         </div>
         <!--الازرار-->
-        <div class="btns mt-3">
-            <a href="{{ url_for('EndShift') }}" class="btn btn-danger" id="EndShift">انهاء الشيفت</a>
-            <a  href="{{ url_for('logout') }}" class="btn btn-danger">تسجيل الخروج</a>
-        </div>
     </div>
     
     <div id="services">
-        <h6 style="color: white; float: right;" class="m-3"> الصندوق : <span id="BOX"><span id="Box">{{lastShift['box']}}</span></span> ج.م</h6>
+      <div class="UpNav">
+        <div class="InfoOfThis m-3">
+        <h6 id="BOX" style="color: white; display: inline;  padding: 2px;"> مبيعات : <span id="Box">{{'%0.1f' % lastShift['box']}}</span> ج</h6>
+        <h6 id="BUY" style="color: white; display: inline;  padding: 2px;"> مصروفات : <span id="Buy">{{'%0.1f' % lastShift['buy']}}</span> ج</h6>
+        <h6 id="TOTAL" style="color: white; display: inline;  padding: 2px;"> صافي : <span id="Total">{{'%0.1f' % (lastShift['box'] - lastShift['buy']) }}</span> ج</h6>
+        <h6 id="RCONT" style="color: white; display: inline;  padding: 2px;" > عدد الفواتير : <b id="Rcont">{{lastShift['R_count']}}</b></h6>
+
+      </div>
         <div class="m-3">
-          <i class="bi bi-circle-fill ml-2" style="color: rgb(0, 189, 0);"></i>
+          <i class="bi bi-circle-fill ml-2" style="color: red"></i>
           <span class="ml-3" style="color: white;">جهاز متاح</span>
 
-          <i class="bi bi-circle-fill ml-2" style="color: red;"></i>
+          <i class="bi bi-circle-fill ml-2" style="color: rgb(0, 189, 0);;"></i>
           <span class="ml-3" style="color: white;">جهاز مشغول</span>
 
           <i class="bi bi-circle-fill ml-2" style="color: yellow;"></i>
           <span class="ml-3" style="color: white;">جهاز محجوز</span>
         </div>
+        <div class="btns mt-3">
+          <a href="{{ url_for('EndShift') }}" class="btn btn-danger" style="height: 30px;" id="EndShift">انهاء الشيفت</a>
+          <a  href="{{ url_for('logout') }}" class="btn btn-danger" style="height: 30px;">تسجيل الخروج</a>
+        </div>
+      </div>
         <div id="TableCon">
         <div class="table" id="S-Table">
           {% for s in Service %}
@@ -132,7 +159,7 @@
             <div class="ShadowDevice" id="{{s['_id']}}"></div>
           </div>
           {% else %}
-          <div class="device" style="background-color: #FF163E;" data-sid="{{s['_id']}}" id="D{{s['_id']}}" data-price="{{s['S-price']}}" data-status="{{s['S-status']}}">
+          <div class="device" style="background-color: #93FB96;" data-sid="{{s['_id']}}" id="D{{s['_id']}}" data-price="{{s['S-price']}}" data-status="{{s['S-status']}}">
             <span class="Counter" style="display: none;">0</span>
             <div class="img">
               <img src="{{url_for('static' , filename='images/')}}{{s['S-icon']}}">
@@ -147,35 +174,7 @@
   </div>
     <div class="DeviceRecipt">
       <div class="calc">
-        <h6 class="mb-3 mt-3 TitleOfSections">حساب الفاتورة</h6>
-        <div class="TimeAndSetting">
-          <div class="setting">
-            <div class="oneLine">
-              <span>نبهني بعد</span>
-              <input type="text" id="time">
-              <span>دقيقة</span>
-              <button id="alarm" class="startInterval">ابدء</button>
-              <button id="disalarm" class="startInterval" disabled style="display: none;">انهاء</button>
-            </div>
-            
-            <div class="oneLine">
-              <span>سداد جزء</span>
-              <input type="text" id="purchase">
-              <span>ج.م</span>
-              <button id="Bpurchase">تسديد</button>
-            </div>
-
-            <div class="oneLine">
-              <span>خصم</span>
-              <input type="text" id="discount">
-              <span>ج.م</span>
-              <button id="Bdiscount">حساب</button>
-            </div>
-          </div>
-          <div class="time">
-            <p id="consumedTime">0 ساعة</p>
-          </div>
-        </div>
+        <h6 class="mt-3 TitleOfSections">حساب الفاتورة</h6>
         <h6 style="color: white; float: right;">المنتجات</h6>
         <div class="clearfix"></div>
         <table class="mb-4" id="Ptabelforrecipt">
@@ -192,25 +191,49 @@
 
           </tbody>
         </table>
-      <div class="reciptInformation">
-        <div class="reciptEnd mb-2">
-          <button class="btn btn-danger" id="endOfRecipt">انهاء الفاتورة</button>
-        </div>
-      <div class="spanCon mb-3">
-        <span class="total ml-2" id="totlaNum">الاجمالي : 40 ج.م</span>
-        <span class="total ml-2" id="allNum">الباقي : 0 ج.م</span>
-        <span class="total ml-2" id="restNum">الباقي : 0 ج.م</span>
-        <span class="total ml-2" id="discountNum">الباقي : 0 ج.م</span>
-      </div>
-    </div>
-        <div class="clearfix"></div>
       </div>
 
       <div class="history">
-        <h6 class="mb-3 mt-3 TitleOfSections">حركة الفاتورة</h6>
-        <div id="movement">
+        <div class="TimeAndSetting">
+          <div class="setting">
+            <div class="oneLine">
+              <span>نبهني بعد</span>
+              <input type="text" id="time">
+              <span>دقيقة</span>
+              <button id="alarm" class="startInterval">ابدء</button>
+              <button id="disalarm" class="startInterval" disabled style="display: none;">انهاء</button>
+            </div>
+            
+            <div class="oneLine">
+              <span>سداد جزء</span>
+              <input type="text" id="purchase">
+              <span style="margin-left: 22px;">ج.م</span>
+              <button id="Bpurchase">تسديد</button>
+            </div>
 
+            <div class="oneLine">
+              <span style="margin-left: 30px;">خصم</span>
+              <input type="text" id="discount">
+              <span style="margin-left: 22px;">ج.م</span>
+              <button id="Bdiscount">حساب</button>
+            </div>
+          </div>
+          <div class="time">
+            <p id="consumedTime">0 ساعة</p>
+          </div>
         </div>
+        <div class="reciptInformation">
+          <div class="reciptEnd mb-2">
+            <button class="btn btn-danger" id="endOfRecipt">انهاء الفاتورة</button>
+          </div>
+        <div class="spanCon mb-3">
+          <span class="total ml-2" id="totlaNum">الاجمالي : 40 ج.م</span>
+          <span class="total ml-2" id="allNum">الباقي : 0 ج.م</span>
+          <span class="total ml-2" id="restNum">الباقي : 0 ج.م</span>
+          <span class="total ml-2" id="discountNum">الباقي : 0 ج.م</span>
+        </div>
+      </div>
+          <div class="clearfix"></div>
       </div>
 
       <div class="items">
@@ -303,20 +326,96 @@
       </form>
       </div>
     </div>
+    <div class="secondFlexInSettings">
     <div class="Addmsg mb-1">
-      <h6 class="TitleOfSections mb-2 mt-3">اضف رسالة بالفاتورة</h6>
-      <form id="Mmsg">
+      <h6 class="TitleOfSections">اضف رسالة بالفاتورة</h6>
+      <form id="Mmsg" class="mb-2">
         <div class="form-group">
-          <label for="Mval" style="float: right;">الرسالة</label>
-          <div class="clearfix"></div>
           <input type="text" class="form-control" id="Mval" autocomplete="off" placeholder="الرسالة">
         </div>
       <div class="btns">
-        <button type="submit" id="M-add" class="btn btn-primary mb-2">اضف الرسالة</لا>
+        <button type="submit" id="M-add" class="btn btn-primary ">اضف الرسالة</button>
       </div>
     </form>
     </div>
+
+    <div class="Addbuy mb-1">
+      <h6 class="TitleOfSections">اضف مصروف</h6>
+      <form id="Bbuy" class="mb-2">
+        <div class="row">
+          <div class="col">
+            <input type="text" class="form-control" id="BT" autocomplete="off" placeholder="عنوان المصروف">
+          </div>
+          <div class="col">
+            <input type="number" class="form-control" id="BV" autocomplete="off" placeholder="القيمة">
+          </div>
+        </div>
+      <div class="btns mt-3">
+        <button type="submit" id="BB-add" class="btn btn-primary ">اضف</button>
+      </div>
+    </form>
+    </div>
+
   </div>
+  </div>
+
+  <div id="excelBuy">
+    <h3 style="color: white; text-align: center;" class="m-3">المصاريف اليومية</h3>
+    <div class="serach">
+      <input type="text" id="t" class="form-control" data-key="t" placeholder="عنوان الصرف">
+      <input type="text" id="v" class="form-control" data-key="v"  placeholder="القيمة">
+      <input type="number" id="snn" class="form-control" data-key="sn"  placeholder="رقم الشيفت">
+      <div class="form-group">
+        <label for="from" style="float: right;">من</label>
+        <div class="clearfix"></div>
+        <input type="date" data-key="serachDate_From" class="form-control DateSearch" id="from2" autocomplete="off" placeholder="الرسالة">
+      </div>
+      <div class="form-group">
+        <label for="to" style="float: right;">الي</label>
+        <div class="clearfix"></div>
+        <input type="date" data-key="serachDate_To" class="form-control DateSearch" id="to2" autocomplete="off" placeholder="الرسالة">
+      </div>
+    </div>
+    <div class="btns mt-2 mb-2">
+      <button id="SearchNow2" class="btn btn-primary">بحث</button>
+    </div>
+    <div id="tableConR2">
+      <div id="twoTabels2">
+        <div id="RRRTabels">
+      <table class="mb-4" id="ReportsTable">
+        <thead>
+            <tr style="font-size: 14px;">
+                <th>التاريخ</th>
+                <th>رقم الشيفت</th>
+                <th>العنوان</th>
+                <th>القيمة</th>
+              </tr>
+        </thead>
+        <tbody>
+            {% for e in expense %}
+            <tr style="font-size: 14px;">
+                <td>{{ e['d'] }}</td>
+                <td>{{e['sn']}}</td>
+                <td>{{ e['t'] }}</td>
+                <td>{{ e['v'] }}</td>
+              </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+      <table  class="mb-4">
+        <thead>
+          <tr style="font-size: 14px; font-weight: 800;">
+            <td> الاجمالي :  {{'%0.1f' % expensesTotal['t']}} </td>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+
+  </div>
+
+
   <div id="excel">
     <h3 style="color: white; text-align: center;" class="m-3">التقارير اليومية</h3>
     <div class="serach">
@@ -365,7 +464,7 @@
                 <td>{{ info['serviceName'] }}</td>
                 <td>{{ info['R_n'] }}</td>
                 <td>{{ info['dis'] }}</td>
-                <td>{{ info['total'] }}</td>
+                <td>{{ '%0.1f' % info['total'] }}</td>
                 <td><a target="_blank" href="{{url_for('R_Detail' , id= info['_id'])}}" class="btn btn-primary"><i class="bi bi-binoculars" style="color: white;"></i></a></td>
               </tr>
             {% endfor %}
@@ -375,9 +474,9 @@
       <table  class="mb-4">
         <thead>
           <tr style="font-size: 14px; font-weight: 800;">
-            <td> الاجمالي :  {{totalInReport['total']}} </td>
+            <td> الاجمالي :  {{'%0.1f' % totalInReport['total']}} </td>
             <td> اجمالي الخصومات : {{totalInReport['dis']}} </td>
-            <td> صافي : {{totalInReport['safy']}}</td>
+            <td> صافي : {{'%0.1f' % totalInReport['safy']}}</td>
           </tr>
         </thead>
       </table>
@@ -410,6 +509,18 @@
     </div>
  </div>
 
+
+ <!--REASON FOR DISCOUNT-->
+ <div id="reason">
+   <form action="" id="WhyForm">
+     <input type="text" id='reasonField' placeholder="سبب الخصم" class="form-control">
+     <div class="btns mt-2" style="justify-content: center;">
+     <button type="submit" style="margin: unset;" class="btn btn-success mr-2" >اضافة</button>
+    </div>
+   </form>
+ </div>
+ <!--END RESOAN-->
+
  <audio id="noti" style="visibility: hidden;">
   <source src="{{url_for('static' , filename='audio/noti.mp3')}}" type="audio/mpeg">
   Your browser does not support the audio element.
@@ -417,6 +528,7 @@
 
     <script src="{{js[10]}}"></script>
     <script src="{{js[11]}}"></script>
+    <script src="{{js[13]}}"></script>
     <script src="{{js[0]}}"></script>
     <script src="{{js[1]}}"></script>
     <script src="{{js[2]}}"></script>

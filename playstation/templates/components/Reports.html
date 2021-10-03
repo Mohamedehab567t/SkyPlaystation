@@ -19,7 +19,7 @@
             <td>{{ info['serviceName'] }}</td>
             <td>{{ info['R_n'] }}</td>
             <td>{{ info['dis'] }}</td>
-            <td>{{ info['total'] }}</td>
+            <td>{{ '%0.1f' % info['total'] }}</td>
             <td><a target="_blank" href="{{url_for('R_Detail' , id= info['_id'])}}" class="btn btn-primary"><i class="bi bi-binoculars" style="color: white;"></i></a></td>
           </tr>
         {% endfor %}
@@ -29,9 +29,9 @@
 <table  class="mb-4">
   <thead>
     <tr style="font-size: 14px; font-weight: 800;">
-      <td> الاجمالي :  {{totalInReport['total']}} </td>
+      <td> الاجمالي :  {{ '%0.1f' % totalInReport['total']}} </td>
       <td> اجمالي الخصومات : {{totalInReport['dis']}} </td>
-      <td> صافي : {{totalInReport['safy']}}</td>
+      <td> صافي : {{ '%0.1f' % totalInReport['safy']}}</td>
     </tr>
   </thead>
 </table>
