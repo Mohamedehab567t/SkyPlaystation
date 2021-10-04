@@ -2,7 +2,7 @@ from time import strftime
 from playstation import app
 from playstation.Objects.Design.frontend import Front as fr
 from .forms import Login
-from .functions import AddReciptToDataBase , makeAnotherShift,ReturnReport2,ReturnReport, getTotalOfThis ,getTotalOfbuy, expensesOperations
+from .functions import AddReciptToDataBase ,DO, makeAnotherShift,ReturnReport2,ReturnReport, getTotalOfThis ,getTotalOfbuy, expensesOperations
 from flask import render_template , redirect , url_for,request, session
 from .models import Shifts, services , products,users, msg , Recipts , expenses
 import random

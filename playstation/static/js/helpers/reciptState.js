@@ -149,7 +149,6 @@ class rState {
             $(ele).prop('disabled' , true)
             },
             success : function(data){
-                alert(data)
                 f1('TableCon' , 'S-Table')
                 $(ele).prop('disabled' , false)
                 ThisClass.refreshDiv('tablecon' , 'ProducTabels')
@@ -368,7 +367,6 @@ class rState {
             $('#endOfRecipt').text('انهاء الفاتورة')
             },
             success : function(data){
-                alert(data['msg'])
                 $('.fatora').html(data['temp'])
                 $('#BackDrop').attr('class' , '')
                 $('#BackDrop').addClass(''+id)
@@ -444,7 +442,8 @@ class rState {
             this.ele = false
             this.ChangeState($('.DeviceRecipt'))
             this.refreshDiv('TableCon' , 'S-Table')
-            this.refreshDiv('BOX' , 'Box')
+            this.refreshDiv('HH' , 'Hh')
+            this.refreshDiv('PP' , 'Pp')
             this.refreshDiv('BUY' , 'Buy')
             this.refreshDiv('TOTAL' , 'Total')
             this.refreshDiv('RCONT' , 'Rcont')

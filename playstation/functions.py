@@ -36,6 +36,8 @@ def AddReciptToDataBase(obj) :
     Shifts.update_one({'_id' : lastShift['_id']}, {
         '$set' : {
             'box' : lastShiftBox + obj['total'],
+            'TH' : lastShift['TH'] + obj['totalS'],
+            'TP' : lastShift['TP'] + obj['totalP'] ,
             'R_count' : lastShiftRecipts + 1
         }
     })
@@ -48,7 +50,7 @@ def makeAnotherShift():
     Sshifts = list(Shifts.find())
     lastShift = Sshifts[len(Sshifts) - 1]
     lastID = lastShift['_id']
-    Shifts.insert_one({'_id' : lastID + 1 , 'box' : 0 , 'R_count' : 0 , 'buy' : 0})
+    Shifts.insert_one({'_id' : lastID + 1 , 'box' : 0 , 'R_count' : 0 , 'buy' : 0 , 'TH' : 0 , 'TP' : 0})
     
     
 def ReturnReport(val):
@@ -111,7 +113,6 @@ def expensesOperations(ex):
     lastShiftBuy = lastShift['buy']
     Shifts.update_one({'_id' : lastShift['_id']}, {
         '$set' : {
-            'box' : lastShiftBox - int(ex['v']),
             'buy' : int(ex['v']) + lastShiftBuy
         }
     })
@@ -119,3 +120,22 @@ def expensesOperations(ex):
     ex['sn'] = lastShift['_id']
     ex['v'] = int(ex['v'])
     expenses.insert_one(ex)
+    
+    
+def DO(shift):
+    Sshifts = list(Shifts.find())
+    lastShift = Sshifts[len(Sshifts) - 1]
+    R = list(Recipts.find({'ShiftNumber' : lastShift['_id']}))
+    p = 0
+    h = 0
+    for r in R:
+        print('S total' + str(r['totalS']))
+        p += r['totalP']
+        h += r['totalS']
+        print('h total '+str(h))
+    Shifts.update_one({'_id' : shift['_id']} , {
+        '$set' : {
+            'TH' : h,
+            'TP' : p 
+        }
+    })

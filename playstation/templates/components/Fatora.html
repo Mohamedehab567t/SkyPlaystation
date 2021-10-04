@@ -1,6 +1,6 @@
 <div id="fatora_child">
     <div class="img">
-    <img src="{{url_for('static' , filename='images/ll.png')}}">
+    <img src="{{url_for('static' , filename='images/TETO.png')}}">
   </div>
   <div class="Dte">
     <span>
@@ -26,7 +26,7 @@
       </thead>
       <tbody>
         <tr>
-          <td>{{obj['totalS']}}</td>
+          <td>{{'%0.0f' % obj['totalS']}}</td>
           <td>{{obj['endDT']}}</td>
           <td>{{obj['startDT']}}</td>
           <td>{{serviceName['S-name']}}</td>
@@ -51,7 +51,7 @@
       <tbody>
         {% for p in obj['products'] %}
         <tr>
-          <td>{{p['total'].split(' ')[0]}}</td>
+          <td>{{'%0.0f' % p['total'].split(' ')[0]|int}}</td>
           <td>{{p['quantity']}}</td>
           <td>{{p['price']}}</td>
           <td>{{p['name']}}</td>
@@ -64,9 +64,9 @@
   {% endif %}
 <div class="infoss" style="text-align: center;">
     {% set TOTAL = obj['totalS'] + obj['totalP'] %}
-  <span class="mr-1" style="font-size: 13px; margin-top: -5px;">اجمالي : {{TOTAL}}ج</span>
-  <span class="mr-1" style="font-size: 13px; margin-top: -5px; font-weight: 900;">خصم : {{obj['dis']}}ج</span>
-  <span class="mr-1" style="font-size: 13px; margin-top: -5px;">صافي : {{obj['total']}}ج</span>
+  <span class="mr-1" style="font-size: 13px; margin-top: -5px;">اجمالي : {{'%0.0f' % TOTAL}}ج</span>
+  <span class="mr-1" style="font-size: 13px; margin-top: -5px; font-weight: 900;">خصم : {{'%0.0f' % obj['dis']}}ج</span>
+  <span class="mr-1" style="font-size: 13px; margin-top: -5px;">صافي : {{'%0.0f' % obj['total']}}ج</span>
 </div>
   <hr style="border: black .3px solid;">
   <div class="notes">

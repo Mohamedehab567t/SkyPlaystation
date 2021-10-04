@@ -38,6 +38,23 @@ $(window).on('keyup' , function(e) {
         }else{
             RState.quantityChange($(e.target))
         }
+    }else if ($(e.target).hasClass("DI")){
+        let inp = e.target
+        if($(inp).attr('id') == 'discount'){
+            if($(inp).val() != ''){
+                let v = (parseFloat($(inp).val()) / parseFloat($('#totlaNum').text().split(':')[1].split('ج')[0].trim())) * 100  
+                $('#discountpercentage').val(''+v.toFixed(1))    
+            }else{
+                $('#discountpercentage').val('')    
+            }
+        }else{
+            if($(inp).val() != ''){
+                let v = (parseFloat($(inp).val()) / 100) * parseFloat($('#totlaNum').text().split(':')[1].split('ج')[0].trim())  
+                $('#discount').val(''+v.toFixed(1))
+            }else{
+                $('#discount').val('')
+            }
+        }
     }
 })
 
@@ -100,15 +117,16 @@ $('#Bdiscount').on('click' , function() {
     let R = $(this).attr('class')
     let OBJ = JSON.parse(localStorage.getItem(R))
     if(discountValue != ''){
-        OBJ['discount'] = OBJ['discount'] + parseFloat(discountValue)
-        OBJ['totalnum'] = OBJ['totalnum'] - OBJ['discount']
         let d = new Date()
-        OBJ['history'].push('تم خصم مبلغ   '+  discountValue + ' في ' +d.customFormat("#DD#/#MM#/#YYYY# #hh#:#mm# #AMPM#"))
-        localStorage.setItem(R , JSON.stringify(OBJ))
-        RState.buildMyRecipt(JSON.parse(localStorage.getItem(R)))
+            OBJ['discount'] = OBJ['discount'] + parseFloat(discountValue)
+            OBJ['totalnum'] = OBJ['totalnum'] - OBJ['discount']
+            OBJ['history'].push('تم خصم مبلغ   '+  discountValue + ' في ' +d.customFormat("#DD#/#MM#/#YYYY# #hh#:#mm# #AMPM#"))
+            localStorage.setItem(R , JSON.stringify(OBJ))
+            RState.buildMyRecipt(JSON.parse(localStorage.getItem(R)))
     }
     $('#discount').val('')
-    Why(R)
+    $('#discountpercentage').val('')
+        Why(R)
 })
 
 $('#WhyForm').on('submit' , function(e){
@@ -225,7 +243,6 @@ function printDiv() {
         }
         .img img {
           width: 100px;
-          height: 100px;
         }
         table , th , td {
           border: .5px solid rgb(170, 170, 170);
