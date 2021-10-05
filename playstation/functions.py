@@ -139,3 +139,18 @@ def DO(shift):
             'TP' : p 
         }
     })
+    
+def flipArray(arr , key , value):
+    arra = []
+    obj = {}
+    for r in arr:
+        if r[key] == value :
+            obj = r
+            break
+    for r in arr:
+        if r == obj :
+            pass
+        else:
+            arra.append(r)
+    arra.append(obj)
+    return arra

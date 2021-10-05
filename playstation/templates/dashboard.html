@@ -115,13 +115,24 @@
     
     <div id="services">
       <div class="UpNav">
-        <div class="InfoOfThis m-3">
-        <h6 id="HH" style="color: white; display: inline;  padding: 2px;"> تايم : <span id="Hh">{{'%0.0f' % lastShift['TH']}}</span></h6>
-        <h6 id="PP" style="color: white; display: inline;  padding: 2px;"> بوفيه : <span id="Pp">{{'%0.0f' % lastShift['TP']}}</span></h6>
-        <h6 id="BUY" style="color: white; display: inline;  padding: 2px;"> مصروفات : <span id="Buy">{{'%0.0f' % lastShift['buy']}}</span></h6>
-        <h6 id="TOTAL" style="color: white; display: inline;  padding: 2px;"> صافي : <span id="Total">{{'%0.0f' % (lastShift['box'] - lastShift['buy']) }}</span></h6>
-        <h6 id="RCONT" style="color: white; display: inline;  padding: 2px;" > عدد الفواتير : <b id="Rcont">{{lastShift['R_count']}}</b></h6>
+        <div class="InfoOfThis m-3" style="display: flex;">
+      <div class="howmuch ml-2">
+        <h6 id="HH" style="color: white;display: flex;flex-direction: column;padding: 2px;border: white .5px solid;"> تايم  <span id="Hh" style="align-self: center;" >{{'%0.0f' % lastShift['TH']}}</span></h6>
+        </div>
+        <div class="howmuch ml-2">
 
+        <h6 id="PP" style="color: white;display: flex;flex-direction: column;padding: 2px;border: white .5px solid;;"> بوفيه  <span id="Pp" style="align-self: center;">{{'%0.0f' % lastShift['TP']}}</span></h6>
+      </div>
+        <div class="howmuch ml-2">
+
+        <h6 id="BUY" style="color: white;display: flex;flex-direction: column;padding: 2px;border: white .5px solid;;"> مصروفات  <span id="Buy" style="align-self: center;">{{'%0.0f' % lastShift['buy']}}</span></h6>
+      </div>
+        <div class="howmuch ml-2">
+        <h6 id="TOTAL" style="color: white;display: flex;flex-direction: column;padding: 2px;border: white .5px solid;"> صافي  <span id="Total" style="align-self: center;">{{'%0.0f' % (lastShift['box'] - lastShift['buy']) }}</span></h6>
+      </div>
+        <div class="howmuch ml-2">
+        <h6 id="RCONT" style="color: white;display: flex;flex-direction: column;padding: 2px;border: white .5px solid;" > عدد الفواتير  <b style="align-self: center;" id="Rcont">{{lastShift['R_count']}}</b></h6>
+      </div>
       </div>
         <div class="m-3">
           <i class="bi bi-circle-fill ml-2" style="color: red"></i>

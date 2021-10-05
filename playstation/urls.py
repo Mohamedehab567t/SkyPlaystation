@@ -2,7 +2,7 @@ from time import strftime
 from playstation import app
 from playstation.Objects.Design.frontend import Front as fr
 from .forms import Login
-from .functions import AddReciptToDataBase ,DO, makeAnotherShift,ReturnReport2,ReturnReport, getTotalOfThis ,getTotalOfbuy, expensesOperations
+from .functions import AddReciptToDataBase ,flipArray, makeAnotherShift,ReturnReport2,ReturnReport, getTotalOfThis ,getTotalOfbuy, expensesOperations
 from flask import render_template , redirect , url_for,request, session
 from .models import Shifts, services , products,users, msg , Recipts , expenses
 import random
@@ -32,7 +32,7 @@ def dashboard():
     filesCss = fr.Getcss('dashboard')
     filesJs = fr.Getjs('helpers/url.js','routes.js','components/service.js','components/product.js','settings.js','helpers/reciptState.js','reciptandservics.js',
                        'helpers/DateFormatting.js','components/message.js' , 'excel.js' , 'components/buy.js')
-    Sservices = list(services.find())
+    Sservices = flipArray(list(services.find()) , 'S-name' , 'cash')
     Pproducts = products.find()
     Sshifts = list(Shifts.find())
     lastShift = Sshifts[len(Sshifts) - 1]
