@@ -1,10 +1,10 @@
 from time import strftime
-from playstation import app
+from playstation import app , cID
 from playstation.Objects.Design.frontend import Front as fr
 from .forms import Login
 from .functions import AddReciptToDataBase ,flipArray, makeAnotherShift,ReturnReport2,ReturnReport, getTotalOfThis ,getTotalOfbuy, expensesOperations
 from flask import render_template , redirect , url_for,request, session
-from .models import Shifts, services , products,users, msg , Recipts , expenses
+from .models import Shifts, services , products,users, msg , Recipts , expenses , colors
 import random
 
 
@@ -41,7 +41,8 @@ def dashboard():
     totalInReport = getTotalOfThis(r , 'total' , 'dis')
     expense = list(expenses.find())
     expensesTotal = getTotalOfbuy(expense , 'v')
-    return render_template('dashboard.html',expense=expense, expensesTotal=expensesTotal ,user_name=user_name,totalInReport=totalInReport ,r=r,css=filesCss, lastShift=lastShift ,js=filesJs, Service = Sservices , Products=Pproducts)
+    mycolors = list(colors.find())[0]
+    return render_template('dashboard.html',mycolors=mycolors,expense=expense, expensesTotal=expensesTotal ,user_name=user_name,totalInReport=totalInReport ,r=r,css=filesCss, lastShift=lastShift ,js=filesJs, Service = Sservices , Products=Pproducts)
 
 
 @app.route('/Excel' , methods=['POST','GET'])
@@ -136,6 +137,18 @@ def EndDevice():
 def EndShift():
     makeAnotherShift()
     return redirect(url_for('logout'))
+
+@app.route('/changecolor' , methods=['POST','GET'])
+def changecolor():
+    obj = request.get_json()
+    colors.update_one({'_id' : cID} , {
+        '$set' : {
+            'avacolor' : obj['avacolor'],
+            'lockcolor' : obj['lockcolor'],
+            'busycolor' : obj['busycolor']
+        }
+    })
+    return 'تم تغيير الالوان'
 
 @app.route('/logout')
 def logout():

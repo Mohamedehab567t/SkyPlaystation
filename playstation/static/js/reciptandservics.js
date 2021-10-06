@@ -128,7 +128,35 @@ $('#Bdiscount').on('click' , function() {
     $('#discountpercentage').val('')
         Why(R)
 })
-
+$('#ColorChangeForm').on("submit" , function(e) {
+    let avacolor = $("#avacolor").val()
+    let lockcolor = $("#lockcolor").val()
+    let busycolor = $("#busycolor").val()
+    let  color = {
+        'avacolor' : avacolor,
+        'lockcolor' : lockcolor,
+        'busycolor' : busycolor
+    }
+    $.ajax({
+        type: 'POST',
+        url: '/changecolor',
+        data: JSON.stringify(color),
+        contentType: 'application/json;charset=UTF-8',
+        beforeSend : function(){
+        $('#colorChange').text('جاري ...')
+        },
+        complete: function(){
+        $('#colorChange').text('حفظ')
+        },
+        success : function(data){
+            alert(data)
+        },
+        error : function(errmsg) {
+            alert(errmsg)
+        }
+        });
+    e.preventDefault()
+})
 $('#WhyForm').on('submit' , function(e){
     let R = $(this).find('button').attr('id')
     let obj = JSON.parse(localStorage.getItem(R))
@@ -179,7 +207,8 @@ $('#alarm').on('click' ,function() {
 
 $('#disalarm').on('click' , function(){
     let id = $(this).data('c')
-    $('#D'+id).attr('style' , 'background-color:#93FB96;')
+    let getColor = $('#busycolor').val()
+    $('#D'+id).attr('style' , `background-color:${getColor};`)
     let counter = $('#D'+id).find('.Counter')
     let obj = JSON.parse(localStorage.getItem('R'+id))
     obj['type'] = 'NoTime'
@@ -205,7 +234,8 @@ localStorage.setItem('R'+id , JSON.stringify(obj))
 $(counter).text(New)
 if(text <= 0){
 let idDevice = $('#D'+id)
-$(idDevice).attr('style' , 'background-color:#FF163E; animation: t 0.2s ease-in-out  infinite;')
+let getColor = $('#busycolor').val()
+$(idDevice).attr('style' , `background-color:${getColor}; animation: t 0.2s ease-in-out  infinite;`)
 $('#disalarm').prop('disabled' , false)
 RState.setCalc(false)
 let noti = document.getElementById("noti")

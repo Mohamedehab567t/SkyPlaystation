@@ -143,6 +143,8 @@ def DO(shift):
 def flipArray(arr , key , value):
     arra = []
     obj = {}
+    if len(arr) == 0 :
+        return []
     for r in arr:
         if r[key] == value :
             obj = r
@@ -152,5 +154,5 @@ def flipArray(arr , key , value):
             pass
         else:
             arra.append(r)
-    arra.append(obj)
+    arra.append(obj) if obj != {} else ''
     return arra
