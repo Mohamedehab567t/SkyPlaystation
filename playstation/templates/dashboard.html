@@ -135,14 +135,7 @@
       </div>
       </div>
         <div class="m-3">
-          <i class="bi bi-circle-fill ml-2" style="color: {{mycolors['avacolor']}}"></i>
-          <span class="ml-3" style="color: white;">جهاز متاح</span>
-
-          <i class="bi bi-circle-fill ml-2" style="color: {{mycolors['busycolor']}}"></i>
-          <span class="ml-3" style="color: white;">جهاز مشغول</span>
-
-          <i class="bi bi-circle-fill ml-2" style="color: {{mycolors['lockcolor']}}"></i>
-          <span class="ml-3" style="color: white;">جهاز محجوز</span>
+          <span class="ml-3" id="nameOfDevice" style="color: white;"></span>
         </div>
         <div class="btns mt-3">
           <a href="{{ url_for('EndShift') }}" class="btn btn-danger" style="height: 30px;" id="EndShift">انهاء الشيفت</a>
@@ -396,7 +389,7 @@
         <input type="color" class="form-control" id="busycolor" autocomplete="off" value="{{mycolors['busycolor']}}">
       </div>
     <div class="btns">
-      <button type="submit" id="colorChange" class="btn btn-primary">حفظ</button>
+      <button type="submit" id="colorChange" class="btn btn-primary" disabled>حفظ</button>
     </div>
   </form>
   </div>

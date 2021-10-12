@@ -32,7 +32,7 @@ def dashboard():
     filesCss = fr.Getcss('dashboard')
     filesJs = fr.Getjs('helpers/url.js','routes.js','components/service.js','components/product.js','settings.js','helpers/reciptState.js','reciptandservics.js',
                        'helpers/DateFormatting.js','components/message.js' , 'excel.js' , 'components/buy.js')
-    Sservices = flipArray(list(services.find()) , 'S-name' , 'cash')
+    Sservices = flipArray(list(services.find()) , 'S-name' , 'بوفيه')
     Pproducts = products.find()
     Sshifts = list(Shifts.find())
     lastShift = Sshifts[len(Sshifts) - 1]

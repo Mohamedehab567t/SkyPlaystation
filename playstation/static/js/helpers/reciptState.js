@@ -3,7 +3,8 @@ class rState {
         this.ele = ele
     }
     ChangeState(element){
-        this.ele ? $(element).show() : $(element).hide() 
+        this.ele ? $(element).show() : $(element).hide()
+        if (this.ele == false){$('#nameOfDevice').text('')} 
     }
     showRelatedRecipt(prev , selected , element){
         if(prev == 0 || prev == selected){
@@ -11,6 +12,7 @@ class rState {
             this.ChangeState(element)
             let state = localStorage.getItem('D'+selected)
             this.checkRecipptState(state , selected , element)
+            if (this.ele == false){$('#nameOfDevice').text('')}
             
         }else{
             $(element).hide()
@@ -203,6 +205,15 @@ class rState {
         obj['totalHours'] =  NowPrice
         $(consumedTime).text(Dobj['h'] + ' ساعة ' +Dobj['m'] + ' دقيقة'+' = ' + NowPrice.toFixed(0) + ' ج ') 
 
+        if($('#D'+obj['sid']).find('#name').text() == 'بوفيه'){
+            $(consumedTime).text('') 
+        }
+        console.log($('#D'+obj['sid']).find('#name').text())
+
+        //Write What Habbend
+        let device = $('#D'+obj['sid'])
+        $('#nameOfDevice').text($(device).find('#name').text())
+
         //set Discount
         $('#Bdiscount').attr('class' , '')
         $('#Bdiscount').addClass('R'+obj['sid'])
@@ -386,6 +397,9 @@ class rState {
         let Dobj = this.returnInHours(Date.parse(new Date()) , Date.parse(obj['startTime']))
         let NowPrice = parseFloat(Dobj['H']) * parseInt(price)
         obj['totalHours'] =  NowPrice
+        if($('#D'+obj['sid']).find('#name').text() == 'بوفيه'){
+            obj['totalHours'] = 0
+        }
         obj['totalnum'] = obj['totalHours'] + obj['totalProducts'] - obj['discount']
         let AllTotal = obj['totalHours'] + obj['totalProducts']
         localStorage.setItem('R'+obj['sid'] , JSON.stringify(obj))
