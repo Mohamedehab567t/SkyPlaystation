@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{css[0]}}">
+    <link rel="stylesheet" href="{{css[1]}}">
+    <link rel="stylesheet" href="{{css[2]}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap" rel="stylesheet">
+
+    <title>ادارة المخازن</title>
+</head>
+<body style="background-color: darkseagreen; direction: rtl;">
+    
+    <div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; color: white;">
+        <div style="width: 50%; padding: 15px;">
+            <input type="text" id="search" autocomplete="off" class="form-control" placeholder="بحث">
+        </div>
+        <div style="width: 50%; padding: 15px;">
+            <table class="table table-dark" id='ProducTabels' style="margin:5px auto; text-align: center;">
+                <thead>
+                  <tr>
+                    <th>اسم المنتج</th>
+                    <th>سعره</th>
+                    <th>اجمالي المخزون</th>
+                    <th>مسحوبات</th>
+                    <th>تعديل</th>
+                    <th>اضف مخزون</th>
+                    <th>احذف المنتج</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for p in Pproducts %}
+                  <tr>
+                    <td class="pName">{{p['p_name']}}</td>
+                    <td>{{'%0.1f' %p['p_price']}} ج.م</td>
+                    <td>{{'%0.1f' %p['totalquantity']}}</td>
+                    <td>{{'%0.1f' %p['drawn']}}</td>
+                    <td><a href="{{ url_for('modifyProduct' , id=p['_id']) }}"><i class="fa fa-pencil btn btn-info" id="{{p['_id']}}" style="color: rgb(255, 255, 255);"></i></a></td>
+                    <td><a href="{{ url_for('modifyProductstorage' , id=p['_id']) }}"><i class="fa fa-plus-circle btn btn-info" id="{{p['_id']}}" style="color: rgb(255, 255, 255);"></i></a></td>
+                    <td><a href="{{ url_for('deleteProduct' , id=p['_id']) }}"><i class="fa fa-times-circle btn btn-info" id="{{p['_id']}}" style="color: rgb(255, 255, 255);"></i></a></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="{{js[0]}}"></script>
+    <script src="{{js[1]}}"></script>
+    <script src="{{js[2]}}"></script>
+    <script src="{{js[3]}}"></script>
+    <script src="{{js[4]}}"></script>
+</body>
+</html>

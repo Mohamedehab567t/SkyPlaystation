@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .input{
+            display: flex;
+            margin-bottom: 5px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .input label{
+            margin : 15px;
+        }
+    </style>
+    <title>جهاز رقم {{service._id}}</title>
+</head>
+<body>
+    <form action="" method="POST">
+        <div class="input">
+            <label for="name">اسم الجهاز</label>
+            <input type="text" autocomplete="off" id="name" value="{{service['S_name']}}">
+        </div>
+        <div class="input">
+            <label for="price">سعر</label>
+            <input type="number" autocomplete="off" id="price" value="{{service['S_price']}}">
+        </div>
+        <div class="input">
+            <label for="multi">سعر المالتي</label>
+            <input type="number" autocomplete="off" id="multi" value="{{service['Multi_price']}}">
+        </div>
+        <div style="display: flex;">
+            <button data-id="{{service._id}}" id="u" style="margin: auto; background-color: green; padding: 8px; color: white; outline: none; cursor: pointer;">تعديل</button>
+            <button data-id="{{service._id}}" id="d" style="margin: auto; background-color: red; padding: 8px; color: white; outline: none; cursor: pointer;">حذف</button>
+        </div>
+    </form>
+    <script src="{{js[0]}}"></script>
+    <script src="{{js[1]}}"></script>
+    <script src="{{js[2]}}"></script>
+    <script>
+        $("#u").on("click" , function(){
+            let name = $("#name").val()
+            let price = $("#price").val()
+            let multi = $("#multi").val()
+            if (name == "" || price == "" || multi == ""){
+                alert("لا يمكن ان يكون هناك حقل فارغ")
+            }else{
+                    $.ajax({
+                    type: 'POST',
+                    url: '/updateDevice',
+                    data: JSON.stringify({"id" : $(this).data("id") , "name" : name , "price" : price , "multi" : multi}),
+                    contentType: 'application/json;charset=UTF-8',
+                    success : function(data){
+                        window.close()
+                    },
+                    error : function(errmsg) {
+                    alert(errmsg.statusText)
+                    }
+                    });
+            }
+        })
+
+
+        $("#d").on("click" , function(){
+                    $.ajax({
+                    type: 'POST',
+                    url: '/deleteDevice',
+                    data: JSON.stringify({"id" : $(this).data("id")}),
+                    contentType: 'application/json;charset=UTF-8',
+                    success : function(data){
+                        window.close()
+                    },
+                    error : function(errmsg) {
+                    alert(errmsg.statusText)
+                    }
+                    });
+        })
+    </script>
+</body>
+</html>

@@ -1,9 +1,8 @@
 var urlController = new url(null)
 const RState = new rState(false)
-
 RState.ChangeState($('.DeviceRecipt'))
 let prevChoosed = 0;
-$(window).on('click' , function(e) {
+$(window).on('click' , function(e){
     if($(e.target).hasClass('ShadowDevice')){
         if(prevChoosed == 0){
             RState.showRelatedRecipt(prevChoosed , $(e.target).attr('id') , $('.DeviceRecipt'))
@@ -13,11 +12,38 @@ $(window).on('click' , function(e) {
             prevChoosed = $(e.target).attr('id')
         }
     }else if ($(e.target).hasClass('plus')){
-        RState.addProductToTheRecipt($(e.target))
+        if($(e.target).data('quantity') == 0){
+            alert('الكمية صفر من فضلك اضف مخزون')
+        }else{
+            RState.addProductToTheRecipt($(e.target))
+        }
     }else if ($(e.target).hasClass('min')){
         RState.deleteProductToTheRecipt($(e.target))
     }
+
+    if($(e.target).attr("id") == "sendRecipts"){
+        $.ajax({
+            type: 'POST',
+            url: '/sendRecipts',
+            beforeSend : function(){
+            $(e.target).text('جاري ...')
+            },
+            complete: function(){
+            $(e.target).text('')
+            },
+            success : function(data){
+                urlController.refreshDiv("offlinediv" , "offline")
+                alert(data)
+            },
+            error : function(errmsg) {
+                alert(errmsg)
+            }
+            });
+    }
 })
+
+
+
 
 $(window).on('change' , function(e) {
     if($(e.target).hasClass("quantityBox")){
@@ -60,9 +86,20 @@ $(window).on('keyup' , function(e) {
 
 $(document).ready(function() {
     let devices = Array.from($('.device'))
+    let RulesInfos = Array.from($(".rule"))
     devices.forEach(e => {
         localStorage.setItem($(e).attr('id'),$(e).data('status'))
     })
+    let Rules = []
+    RulesInfos.forEach(e => {
+        let count = $(e).data("count")
+        let value = $(e).data("value")
+        Rules.push({
+            'count' : count,
+            'value' : value
+        })
+    })
+    localStorage.setItem("rules",JSON.stringify(Rules))
     $('.Loading').attr('style' , 'display : none !important')
 })
 
@@ -79,7 +116,7 @@ $('#LockR').on('click' , function(){
 $('#StartR').on('click' , function() {
     let device = $('#D'+$(this).data('id'))
     RState.StartDevice($(this).data('id') , $(this),
-    urlController.refreshDiv , $(device).data('price'))
+    urlController.refreshDiv , $(device).data('price'), $(device).data('mutli'))
 })
 
 $('#search').on('keyup' , function(){
@@ -112,12 +149,36 @@ $('#Bpurchase').on('click' , function(){
     $('#purchase').val('')
 })
 
+$('#SD').on('change' , function(){
+    let R = $(this).attr('class')
+    let OBJ = JSON.parse(localStorage.getItem(R))
+    if(OBJ['benchPrice'] != "None"){
+        let temp = OBJ['price']
+        OBJ['price'] = OBJ['benchPrice']
+        OBJ['benchPrice'] = temp
+        OBJ['price_type'] = $(this).val()
+        localStorage.setItem(R , JSON.stringify(OBJ))
+        RState.buildMyRecipt(JSON.parse(localStorage.getItem(R)))
+    }else{
+        alert("لم يتم تحديد سعر المالتي علي هذا الجهاز")
+    }
+
+})
+
+$('#joycount').on('change' , function(){
+    let R = $(this).attr('class')
+    let OBJ = JSON.parse(localStorage.getItem(R))
+    OBJ['joystick_count'] = $(this).val()
+    localStorage.setItem(R , JSON.stringify(OBJ))
+    RState.buildMyRecipt(JSON.parse(localStorage.getItem(R)))
+})
+
 $('#Bdiscount').on('click' , function() {
     let discountValue = $('#discount').val()
     let R = $(this).attr('class')
     let OBJ = JSON.parse(localStorage.getItem(R))
     if(discountValue != ''){
-        let d = new Date()
+            let d = new Date()
             OBJ['discount'] = OBJ['discount'] + parseFloat(discountValue)
             OBJ['totalnum'] = OBJ['totalnum'] - OBJ['discount']
             OBJ['history'].push('تم خصم مبلغ   '+  discountValue + ' في ' +d.customFormat("#DD#/#MM#/#YYYY# #hh#:#mm# #AMPM#"))
@@ -169,7 +230,12 @@ $('#WhyForm').on('submit' , function(e){
 
 $('#endOfRecipt').on('click' , function(){
     let objID = $(this).attr('class').split(' ')[2]
-    RState.endRecipt(objID)
+    let obj = JSON.parse(localStorage.getItem('R'+objID))
+    if(obj['customer'] == undefined){
+        alert("الرجاء اضافة عميل علي الفاتورة")
+    }else{
+        RState.endRecipt(objID)
+    }
 })
 
 $("#YES").on('click' , function(){
@@ -245,6 +311,85 @@ $(counter).text(0)
 }
 }
 
+$("#customeriNPUT").on('change' , function(){
+    let R = $(this).attr('class')
+    let OBJ = JSON.parse(localStorage.getItem(R))
+    let rules = JSON.parse(localStorage.getItem('rules'))
+    let discount = 0
+    let rn = $("#cuustomers option[value='" + $('#customeriNPUT').val() + "']").data('rn')
+    let payed = $("#cuustomers option[value='" + $('#customeriNPUT').val() + "']").data('payed')
+    let special = $("#cuustomers option[value='" + $('#customeriNPUT').val() + "']").data('special')
+    OBJ['customer'] = {
+        'name' : $('#customeriNPUT').val(),
+        'rn' : rn,
+        'payed' : payed
+    }
+    rules.forEach(e => {
+        if(rn > parseInt(e.count)){
+            discount = parseFloat(e.value)
+        }
+    })
+    if(special == "None"){
+        if(discount > 0){
+            let agree = confirm("هناك قاعدة خصم تطبق علي هذا العميل هل تريد تطبيقها ؟ ")
+            if(agree){
+                let d = new Date()
+                OBJ['specialDis'] = discount
+                OBJ['history'].push('تم تفعيل خصم مميز للعميل وقيمته   '+  parseInt(discount*100) + '%  في ' +d.customFormat("#DD#/#MM#/#YYYY# #hh#:#mm# #AMPM#"))
+            }
+        }else{
+            if(OBJ['specialDis'] != undefined){
+                delete OBJ['specialDis']
+            }
+        }
+    }else{
+        let d = new Date()
+        OBJ['specialDis'] = parseFloat(special)
+        OBJ['history'].push('تم تفعيل خصم مميز للعميل وقيمته   '+  parseInt(special*100) + '%  في ' +d.customFormat("#DD#/#MM#/#YYYY# #hh#:#mm# #AMPM#"))
+    }
+
+    localStorage.setItem(R , JSON.stringify(OBJ))
+    RState.buildMyRecipt(JSON.parse(localStorage.getItem(R)))
+})
+
+$("#cusstomerNew").on("submit" , function(e){
+    e.preventDefault()
+    let name = $("#cusstomerNew #name").val()
+    let phone = $("#cusstomerNew #phone").val()
+    if(name == '' || phone == ''){
+        alert("من فضلك اكمل البيانات")
+    }else if (phone.length < 11 || phone.length > 11 || isNaN(phone)){
+        alert("رقم الهاتف ﻻبد ان يكون 11 رقم او انك ادخلت رقم خاطئ")
+    }
+    else{
+        $.ajax({
+            type: 'POST',
+            url: '/AddCustomer',
+            data: JSON.stringify({"name" : name.trim() , "phone" : phone}),
+            contentType: 'application/json;charset=UTF-8',
+            beforeSend : function(){
+            $('#garysend').text('جاري ...')
+            $('#cusstomerNew').attr('style' , 'display:none !important')
+            window.location.reload()
+            },
+            success : function(data){
+                alert(data)
+            },
+            error : function(errmsg) {
+                alert(errmsg.statusText)
+            }
+            });
+    }
+
+})
+
+$("#AddCustomer").on("click" , function(){
+    $('#cusstomerNew').attr('style' , 'display:block !important')
+})
+
+$("#close").on("click" , function(){
+    $('#cusstomerNew').attr('style' , 'display:none !important')
+})
 
 function Why(r) {
     $('#reason').attr('style' , 'display:block !important')
@@ -261,6 +406,7 @@ function printDiv() {
     a.document.write(`
     body {
         font-family: "Tajawal", sans-serif;
+        -webkit-print-color-adjust: exact !important;
       }
       
         .Dte {
@@ -303,7 +449,8 @@ function printDiv() {
     a.document.write('</style>');
     a.document.write('</head>');
     a.document.write(divContents);
-    a.document.close();
-    a.print();
+    a.document.write("<script> setTimeout(function(){window.print();window.close();}, 500); </script>");
+    a.document.write('</html>');
+   // a.print();
 }
 

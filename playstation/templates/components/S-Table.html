@@ -1,0 +1,32 @@
+<div class="table" id="S-Table">
+    {% for s in Service %}
+    {% if s['S_status'] == 'available' %}
+    <div class="device" style="background-color: #{{mycolors['avacolor']}}" data-sid="{{s['_id']}}" id="D{{s['_id']}}" data-status="{{s['S_status']}}" data-price="{{s['S_price']}}" data-mutli="{{s['Multi_price']}}">
+      <span class="Counter" style="display: none;">0</span>
+      <div class="img">
+        <img src="{{url_for('static' , filename='images/')}}{{s['S_icon']}}">
+      </div>
+      <p id="name">{{s['S_name']}}</p>
+      <div class="ShadowDevice" id="{{s['_id']}}"></div>
+    </div>
+    {% elif s['S_status'] == 'locked' %}
+    <div class="device" style="background-color: #{{mycolors['lockcolor']}}" data-sid="{{s['_id']}}" id="D{{s['_id']}}" data-price="{{s['S_price']}}" data-status="{{s['S_status']}}" data-mutli="{{s['Multi_price']}}">
+      <span class="Counter" style="display: none;">0</span>
+      <div class="img">
+        <img src="{{url_for('static' , filename='images/')}}{{s['S_icon']}}">
+      </div>
+      <p id="name">{{s['S_name']}}</p>
+      <div class="ShadowDevice" id="{{s['_id']}}"></div>
+    </div>
+    {% else %}
+    <div class="device" style="background-color: #{{mycolors['busycolor']}}" data-sid="{{s['_id']}}" id="D{{s['_id']}}" data-price="{{s['S_price']}}" data-status="{{s['S_status']}}" data-mutli="{{s['Multi_price']}}">
+      <span class="Counter" style="display: none;">0</span>
+      <div class="img">
+        <img src="{{url_for('static' , filename='images/')}}{{s['S_icon']}}">
+      </div>
+      <p id="name">{{s['S_name']}}</p>
+      <div class="ShadowDevice" id="{{s['_id']}}"></div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>

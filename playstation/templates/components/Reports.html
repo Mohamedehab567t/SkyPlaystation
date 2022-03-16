@@ -8,19 +8,23 @@
             <th>رقم الفاتورة</th>
             <th>خصم الفاتورة</th>
             <th>صافي الفاتورة</th>
+            <th>البداية</th>
+            <th>النهاية</th>
             <th>عرض</th>
           </tr>
     </thead>
     <tbody>
         {% for info in r %}
-        <tr style="font-size: 14px;">
+        <tr style="font-size: 14px; padding: 5px;">
             <td>{{ info['endDD'] }}</td>
-            <td>{{info['ShiftNumber']}}</td>
+            <td>{{info['shiftNumber']}}</td>
             <td>{{ info['serviceName'] }}</td>
             <td>{{ info['R_n'] }}</td>
             <td>{{ info['dis'] }}</td>
             <td>{{ '%0.0f' % info['total'] }}</td>
-            <td><a target="_blank" href="{{url_for('R_Detail' , id= info['_id'])}}" class="btn btn-primary"><i class="bi bi-binoculars" style="color: white;"></i></a></td>
+            <td>{{info['startDT']|to12 }}</td>
+            <td>{{info['endDT']|to12 }}</td>
+            <td><a target="_blank" href="{{url_for('R_Detail' , id= info['_id'])}}" class="btn btn-primary"><i class="fa fa-eye" style="color: white;"></i></a></td>
           </tr>
         {% endfor %}
     </tbody>

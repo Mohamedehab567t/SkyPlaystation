@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{css[0]}}">
+    <link rel="stylesheet" href="{{css[1]}}">
+    <link rel="stylesheet" href="{{css[2]}}">
+    <link rel="stylesheet" href="{{css[3]}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap" rel="stylesheet">
+    <title>تقرير مسحوبات</title>
+</head>
+<body style="background-color: darkseagreen; direction: rtl;">
+    
+    <div id="excelBuy">
+        <h3 style="color: white; text-align: center;" class="m-3">تقرير مسحوبات</h3>
+        <div class="serach">
+          <input type="number" id="shiftnumber" class="form-control" data-key="shiftnumber" placeholder="رقم الشيفت">
+          <input type="number" id="r_n" class="form-control" data-key="r_n"  placeholder="رقم الفاتورة">
+          <input type="text" list="products" autocomplete="off" id="name" class="form-control" data-key="name"  placeholder="اسم المنتج">
+          <datalist id="products">
+            {% for c in products %}
+            <option value="{{c.p_name}}">
+            {% endfor %}
+          </datalist>
+          <div class="form-group">
+            <label for="from" style="float: right;">من</label>
+            <div class="clearfix"></div>
+            <input type="date" data-key="dateOfRecivieS" class="form-control DateSearch" id="from2" autocomplete="off" placeholder="الرسالة">
+          </div>
+          <div class="form-group">
+            <label for="to" style="float: right;">الي</label>
+            <div class="clearfix"></div>
+            <input type="date" data-key="dateOfRecivieE" class="form-control DateSearch" id="to2" autocomplete="off" placeholder="الرسالة">
+          </div>
+        </div>
+        <div class="btns mt-2 mb-2">
+          <button id="SearchNow2" class="btn btn-primary">بحث</button>
+        </div>
+        <div id="tableConR2">
+          <div id="twoTabels2">
+            <div id="RRRTabels">
+          <table class="mb-4" id="ReportsTable">
+            <thead>
+                <tr style="font-size: 14px;padding: 8px;">
+                    <th>التاريخ</th>
+                    <th>رقم الشيفت</th>
+                    <th>رقم الفاتورة</th>
+                    <th>الاسم</th>
+                    <th>الكمية</th>
+                    <th>المبلغ</th>
+                  </tr>
+            </thead>
+            <tbody>
+                {% for e in rlist %}
+                <tr style="font-size: 14px;padding: 8px;">
+                    <td>{{ e['date'] }}</td>
+                    <td>{{e['shiftnumber']}}</td>
+                    <td>{{ e['r_n'] }}</td>
+                    <td>{{ e['name'] }}</td>
+                    <td>{{ e['quantity'] }}</td>
+                    <td>{{ e['cost'] }}</td>
+                  </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+        </div>
+          <table  class="mb-4">
+            <thead>
+                {% for item in total %}
+              <tr style="font-size: 14px; font-weight: 800;">
+                <td> الاسم :  {{item}} </td>
+                <td> الاجمالي :  {{total[item]}} </td>
+              </tr>
+              {% endfor %}
+            </thead>
+          </table>
+        </div>
+      </div>
+    
+      </div>
+
+    <script src="{{js[0]}}"></script>
+    <script src="{{js[1]}}"></script>
+    <script src="{{js[2]}}"></script>
+    <script src="{{js[3]}}"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<div id="offline" class="btns mt-3">
+    {% if userState.state == 'admin' %}
+    <a href="{{ url_for('EndShift') }}" class="btn btn-danger" style="height: 30px;" id="EndShift">انهاء الشيفت</a>
+    <a href="{{ url_for('manage') }}" class="btn btn-danger" style="height: 30px;" id="mangement">ادارة المخازن</a>
+    {% endif %}    <a  href="{{ url_for('logout') }}" class="btn btn-danger" style="height: 30px;">تسجيل الخروج</a>
+    {% set count = namespace(val=0) %}
+    {% for s in Reciptss %}
+    {% if s['mongo'] == 0 and count.val == 0 %}
+    <a class="btn btn-danger" style="height: 30px; color: white;" id="sendRecipts">ارسال الفواتير المعلقة</a>
+    {% set count.val = 1 %}
+    {% endif %}
+    {% endfor %}
+  </div>

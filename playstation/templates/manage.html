@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{css[0]}}">
+    <link rel="stylesheet" href="{{css[1]}}">
+    <link rel="stylesheet" href="{{css[2]}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap" rel="stylesheet">
+
+    <title>ادارة المخازن</title>
+</head>
+<body style="background-color: darkseagreen;">
+    
+    <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+        <div style="width: 50%; padding: 15px; display: flex; justify-content: space-around; align-items: center;">
+            <a href="{{ url_for('add') }}" style="width: 200px; height: 200px; padding: 10px; background-color: firebrick;display: flex;">
+                <p style="margin: auto; font-weight: 700; color: white; ">اضافة منتج</p>
+            </a>
+            <a href="{{ url_for('modify') }}" style="width: 200px; height: 200px; padding: 10px; background-color: rgb(4, 112, 107);display: flex;">
+                <p style="margin: auto; font-weight: 700; color: white">تقرير منتج</p>
+            </a>
+            <a href="{{ url_for('reportdrawn') }}" style="width: 200px; height: 200px; padding: 10px; background-color: darkmagenta;display: flex;">
+                <p style="margin: auto; font-weight: 700; color: white">تقرير مسحوبات</p>
+            </a>
+            <a href="{{ url_for('dashboard') }}" style="width: 200px; height: 200px; padding: 10px; background-color: chocolate;display: flex;">
+                <p style="margin: auto; font-weight: 700; color: white">رجوع</p>
+            </a>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="{{js[0]}}"></script>
+    <script src="{{js[1]}}"></script>
+    <script src="{{js[2]}}"></script>
+</body>
+</html>

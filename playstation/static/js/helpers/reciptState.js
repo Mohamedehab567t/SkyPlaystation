@@ -135,7 +135,7 @@ class rState {
             });
     }
 
-    StartDevice(id , ele , f1 , price){
+    StartDevice(id , ele , f1 , price , multiplePrice){
         const msg =
         {
            'id' : id
@@ -167,8 +167,12 @@ class rState {
                     "products" : [],
                     "discount" : 0,
                     "price" : price,
+                    "benchPrice" : multiplePrice,
+                    "price_type" : "S",
+                    "joystick_count" : "two",
                     "sid" : id
                 }
+                console.log(ReciptOBJ)
                 let d = new Date()
                 ReciptOBJ.history.push('تم بدأ الفاتورة في '+ d.customFormat("#DD#/#MM#/#YYYY# #hh#:#mm# #AMPM#"))
                 localStorage.setItem('R'+id, JSON.stringify(ReciptOBJ))
@@ -183,8 +187,18 @@ class rState {
 
     //Refresh
     refreshDiv(parentID = "",childID = ""){
-        $( "#"+parentID ).load(window.location.href + " #"+childID );
-    }
+        $.ajax({
+            type: 'POST',
+            url: '/refreshDevices',
+            data: JSON.stringify({"template" :  childID}),
+            contentType: 'application/json;charset=UTF-8',
+            success : function(data){
+                $("#"+parentID).html(data)
+            },
+            error : function(errmsg) {
+                alert(errmsg)
+            }
+            });    }
     //Building Recipt
     buildMyRecipt(obj){
         // get History
@@ -208,8 +222,6 @@ class rState {
         if($('#D'+obj['sid']).find('#name').text() == 'بوفيه'){
             $(consumedTime).text('') 
         }
-        console.log($('#D'+obj['sid']).find('#name').text())
-
         //Write What Habbend
         let device = $('#D'+obj['sid'])
         $('#nameOfDevice').text($(device).find('#name').text())
@@ -218,6 +230,24 @@ class rState {
         $('#Bdiscount').attr('class' , '')
         $('#Bdiscount').addClass('R'+obj['sid'])
         obj['totalnum'] = obj['totalnum'] - obj['discount']
+
+
+        // set customer
+        $('#customeriNPUT').attr('class' , '')
+        $('#customeriNPUT').addClass('R'+obj['sid'])
+        $("#customerdis").text('ﻻ يوجد خصم مميز')
+        if(obj['customer'] != undefined){
+            $('#customeriNPUT').val(obj['customer']['name'])
+            $('#customerinfos').text(`العميل ${obj['customer']['name']} شارك في ${obj['customer']['rn']} فاتورة وادخل للمكان ${parseInt(obj['customer']['payed'])} ج.م`)
+            if(obj['specialDis'] != undefined){
+                $("#customerdis").text(`تم تفعيل خصم مميز بقيمة ${parseFloat(obj['specialDis']) * 100}%  للعميل`)
+            }
+        }else{
+            $('#customeriNPUT').val('')
+            $('#customerinfos').text('يعرض هنا بيانات العميل')
+
+        }
+        
 
         //set Products
         $('#tablecon').attr('class' , '')
@@ -231,6 +261,17 @@ class rState {
 
         //Set Purchase
         this.setRest(obj)
+
+        //Set Price type 
+        $("#SD").val(obj["price_type"])
+        $("#SD").attr('class' , '')
+        $("#SD").addClass('R'+obj['sid'])
+
+
+        // set joystick count
+        $("#joycount").val(obj["joystick_count"])
+        $("#joycount").attr('class' , '')
+        $("#joycount").addClass('R'+obj['sid'])
 
         //make End Recipt ready
         $('#endOfRecipt').attr('class' , 'btn btn-danger')
@@ -274,17 +315,27 @@ class rState {
             'price' : pInfo[1].innerText,
             'quantity' : 1,
             'total' : pInfo[1].innerText,
-            'pid' : Math.floor(Math.random()*100000)
+            'pid' : $(Button).attr('id')
         }
-        obj['products'].push(productOBJ)
-        obj['totalProducts'] = obj['totalProducts'] + parseInt(pInfo[1].innerText.split(' ')[0])
+        let isHere = false
+        obj['products'].forEach(e => {
+            if(e.pid == productOBJ.pid){
+                isHere = true
+            }
+        })
+        if(isHere){
+            alert("هذا المنتج متواجد بالفعل في الفاتورة")
+        }else{
+            obj['products'].push(productOBJ)
+            obj['totalProducts'] = obj['totalProducts'] + parseInt(pInfo[1].innerText.split(' ')[0])
         
-        let d = new Date()
-        obj['history'].push('تم اضافة '+  pInfo[0].innerText + ' في ' + d.customFormat("#AMPM# #hh#:#mm# "))
-
-
-        localStorage.setItem(R , JSON.stringify(obj))
-        this.buildMyRecipt(JSON.parse(localStorage.getItem(R)))
+            let d = new Date()
+            obj['history'].push('تم اضافة '+  pInfo[0].innerText + ' في ' + d.customFormat("#AMPM# #hh#:#mm# "))
+    
+    
+            localStorage.setItem(R , JSON.stringify(obj))
+            this.buildMyRecipt(JSON.parse(localStorage.getItem(R)))
+        }
         
     }
 
@@ -293,16 +344,15 @@ class rState {
         let tableRow = $(Button).closest('tr')
         let R = $(Button).attr('id')
         let obj = JSON.parse(localStorage.getItem(R))
-        obj['products'] = obj['products'].filter(p => p.pid !== $(Button).data('pid'))
-        obj['totalProducts'] = obj['totalProducts'] - parseInt($(Button).data('price'))
+        obj['products'] = obj['products'].filter(p => p.pid != $(Button).data('pid'))
+        obj['totalProducts'] = obj['totalProducts'] - parseInt($(Button).data('price') * parseInt($(tableRow).find('.quantitybox')[0].value))
 
         let d = new Date()
         let nameOfP = Array.from($(tableRow).children('td'))[0]
         obj['history'].push('تم حذف '+ $(nameOfP).text() + ' في ' +d.customFormat("#AMPM# #hh#:#mm#"))
 
-
         localStorage.setItem(R , JSON.stringify(obj))
-        $('#ReciptTableC').prepend(tableRow)
+        //$('#ReciptTableC').prepend(tableRow)
         this.buildMyRecipt(JSON.parse(localStorage.getItem(R)))
     }
 
@@ -326,7 +376,7 @@ class rState {
             $(quantity).append(quantityBox)
             $(total).text(e['total'])
             $(total).attr('class' , 'totalP')
-            $(deleteElement).append(`<i class="bi bi-dash-circle-fill min" id="R${obj['sid']}" data-pid="${e['pid']}" data-price="${$(total).text().split(" ")[0]}" style="color : red;"></i>`)
+            $(deleteElement).append(`<i class="fa fa-minus-circle min" id="R${obj['sid']}" data-pid="${e['pid']}" data-price="${$(total).text().split(" ")[0]}" style="color : red;"></i>`)
             $(tr).append(name)
             $(tr).append(price)
             $(tr).append(quantity)
@@ -373,9 +423,11 @@ class rState {
             contentType: 'application/json;charset=UTF-8',
             beforeSend : function(){
             $('#endOfRecipt').text('جاري ...')
+            $('#endOfRecipt').prop("disabled" , true)
             },
             complete: function(){
             $('#endOfRecipt').text('انهاء الفاتورة')
+            $('#endOfRecipt').prop("disabled" , false)
             },
             success : function(data){
                 $('.fatora').html(data['temp'])
@@ -400,8 +452,13 @@ class rState {
         if($('#D'+obj['sid']).find('#name').text() == 'بوفيه'){
             obj['totalHours'] = 0
         }
-        obj['totalnum'] = obj['totalHours'] + obj['totalProducts'] - obj['discount']
-        let AllTotal = obj['totalHours'] + obj['totalProducts']
+        if(obj['specialDis'] != undefined){
+            let toMin = parseFloat(obj['totalHours'] + obj['totalProducts'] - obj['discount'] + obj['restnum']) * parseFloat(obj['specialDis'])
+            obj['totalnum'] = parseFloat(obj['totalHours'] + obj['totalProducts'] - obj['discount'] + obj['restnum']) - toMin
+        }else{
+            obj['totalnum'] = parseFloat(obj['totalHours'] + obj['totalProducts'] - obj['discount'] + obj['restnum']) 
+        }
+        let AllTotal = obj['totalHours'] + obj['totalProducts'] + obj['restnum']
         localStorage.setItem('R'+obj['sid'] , JSON.stringify(obj))
         $(totlaNum).text('صافي : '+obj['totalnum'].toFixed(0)+'ج')
         $(allNum).text('اجمالي : '+AllTotal.toFixed(0)+'ج')
@@ -426,7 +483,7 @@ class rState {
         let totalService = obj['totalHours']
         let totalProducts = obj['totalProducts']
         let discount = obj['discount']
-        let total = totalService + totalProducts - discount
+        let total = obj['totalnum']
         let historyOfRecipt = obj['history']
         let ReciptObj = {
             'totalS' : totalService,
@@ -440,7 +497,8 @@ class rState {
             'endDD' :EndDate.customFormat("#YYYY#/#MM#/#DD#"),
             'serachDate' :  EndDate.toISOString() ,
             'products' : obj['products'],
-            'ServiceID' : obj['sid']
+            'customer' : $("#customeriNPUT").val(),
+            'serviceID' : obj['sid']
         }
         if(obj['discountR'] != undefined){
             ReciptObj['discountR'] = obj['discountR']
@@ -456,11 +514,7 @@ class rState {
             this.ele = false
             this.ChangeState($('.DeviceRecipt'))
             this.refreshDiv('TableCon' , 'S-Table')
-            this.refreshDiv('HH' , 'Hh')
-            this.refreshDiv('PP' , 'Pp')
-            this.refreshDiv('BUY' , 'Buy')
-            this.refreshDiv('TOTAL' , 'Total')
-            this.refreshDiv('RCONT' , 'Rcont')
-            this.refreshDiv('tableConR' , 'twoTabels')
+            this.refreshDiv('upperinfos' , 'infosinuuper')
+            this.refreshDiv("offlinediv" , "offline")
         }
 }

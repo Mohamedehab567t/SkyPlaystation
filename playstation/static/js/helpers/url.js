@@ -17,6 +17,17 @@ class url {
         $(anchor).addClass('m-active').siblings().removeClass('m-active')
     }
     refreshDiv(parentID = "",childID = ""){
-        $( "#"+parentID ).load(window.location.href + " #"+childID );
+        $.ajax({
+            type: 'POST',
+            url: '/refreshDevices',
+            data: JSON.stringify({"template" :  childID}),
+            contentType: 'application/json;charset=UTF-8',
+            success : function(data){
+                $("#"+parentID).html(data)
+            },
+            error : function(errmsg) {
+                alert(errmsg)
+            }
+            });
     }
   }

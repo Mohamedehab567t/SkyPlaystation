@@ -31,7 +31,7 @@ class MessageComponent {
                         alert(data)
                     },
                     error : function(errmsg) {
-                        alert(errmsg)
+                        alert(errmsg.statusText)
                     }
                     });
             }

@@ -1,0 +1,23 @@
+<div id="infosinuuper" style="display: flex;">
+  
+    <div class="howmuch ml-2">
+      <h6 id="HH" style="color: white;display: flex;flex-direction: column;padding: 2px;border: white .5px solid;"> تايم  <span id="Hh" style="align-self: center;" >{{'%0.0f' % lastShift['TH']}}</span></h6>
+      </div>
+      <div class="howmuch ml-2">
+
+      <h6 id="PP" style="color: white;display: flex;flex-direction: column;padding: 2px;border: white .5px solid;;"> بوفيه  <span id="Pp" style="align-self: center;">{{'%0.0f' % lastShift['TP']}}</span></h6>
+    </div>
+      <div class="howmuch ml-2">
+
+      <h6 id="BUY" style="color: white;display: flex;flex-direction: column;padding: 2px;border: white .5px solid;;"> مصروفات  <span id="Buy" style="align-self: center;">{{'%0.0f' % lastShift['buy']}}</span></h6>
+    </div>
+      <div class="howmuch ml-2">
+      <h6 id="TOTAL" style="color: white;display: flex;flex-direction: column;padding: 2px;border: white .5px solid;"> صافي  <span id="Total" style="align-self: center;">{{'%0.0f' % (lastShift['box']|int - lastShift['buy']|int) }}</span></h6>
+    </div>
+      <div class="howmuch ml-2">
+      <h6 id="RCONT" style="color: white;display: flex;flex-direction: column;padding: 2px;border: white .5px solid;" > عدد الفواتير  <b style="align-self: center;" id="Rcont">{{lastShift['R_count']}}</b></h6>
+    </div>
+    <div class="howmuch ml-2">
+      <h6 id="SNS" style="color: white;display: flex;flex-direction: column;padding: 2px;border: white .5px solid;" > رقم الشيفت  <b style="align-self: center;" id="Rcont">{{lastShift['id']}}</b></h6>
+  </div>
+  </div>

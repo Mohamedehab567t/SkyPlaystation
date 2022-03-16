@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{css[0]}}">
+    <link rel="stylesheet" href="{{css[1]}}">
+    <link rel="stylesheet" href="{{css[2]}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap" rel="stylesheet">
+
+    <title>ادارة المخازن</title>
+</head>
+<body style="background-color: darkseagreen; direction: rtl;">
+    
+    <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; color: white;">
+        <div style="width: 50%; padding: 15px; display: flex; justify-content: space-around; align-items: center;">
+            <div class="addproduct">
+                <h3 class="TitleOfSections" style="margin: 5px auto;">اضافة مخزون</h3>
+                <form id="productformstorage" data-id="{{product['_id']}}">
+                    <div class="form-group">
+                    <label for="nameofproduct" style="float: right;">اسم المنتج</label>
+                    <div class="clearfix"></div>
+                    <input type="text" class="form-control" id="nameofproduct" autocomplete="off" disabled value="{{product['p_name']}}">
+                  </div>
+                    <div class="form-group">
+                      <label for="mesurment" style="float: right;">الوحدة</label>
+                      <div class="clearfix"></div>
+                        <select disabled id="mesurment" class="form-control">
+                            {% if product['mesurment'] == 'box' %}
+                            <option value="box" selected>قطعة</option>
+                            <option value="weightGM">وزن</option>
+                            {% else %}
+                            <option value="box" >قطعة</option>
+                            <option value="weightGM" selected>وزن</option>
+                            {% endif %}
+                        </select>
+                    </div>
+                  <div class="row">
+                          <div class="col">
+                            <label for="boxquantity" style="float: right;">الكراتين المغلقة</label>
+                            <div class="clearfix"></div>
+                                <input type="number" class="form-control" disabled id="restclose" autocomplete="off" value="{{product['boxquantity']}}">        
+                            </div>
+
+                            <div class="col">
+                                <label for="boxquantity" style="float: right;">مخزون مضاف</label>
+                                <div class="clearfix"></div>
+                                {% if product['mesurment'] == 'box' %}
+                                    <input type="number" class="form-control" id="addstorage" autocomplete="off" value="0" step="1">        
+                                {% else %}
+                                <input type="number" class="form-control" id="addstorage" autocomplete="off" value="0" step="0.1">        
+                                {% endif %}                          
+
+                                
+                                  </div>
+
+                          <div class="col">
+                            <label for="boxquantity" style="float: right;">متبقي بالكرتونة المفتوحة</label>
+                            <div class="clearfix"></div>
+                            {% if product['mesurment'] == 'box' %}
+                            <input type="text" class="form-control" id="restopen" disabled autocomplete="off" value="{{product['openboxquantity']}} قطعة">    
+                            {% else %}
+                            <input type="text" class="form-control" id="restopen" disabled autocomplete="off" value="{{product['openboxquantity']}} جرام">    
+                            {% endif %}                          
+
+                        </div>
+                          </div>
+                  <div class="form-group">
+                    <label for="sa7ba" style="float: right;">السحبة تساوي ؟</label>
+                    <div class="clearfix"></div>
+                    <input type="number" class="form-control" id="sa7ba" autocomplete="off" disabled value="{{product['sa7ba']}}" step="0.1">
+                  </div>
+                  <div class="form-group">
+                    <label for="quantityinbox" style="float: right;">الكمية  داخل الوحدة</label>
+                    <div class="clearfix"></div>
+                    <input type="number" class="form-control" id="quantityinbox" disabled autocomplete="off" value="{{product['quantityinbox']}}">
+                  </div>
+                <div class="btns">
+                  <button type="submit" id="P-add" class="btn btn-primary">اضف مخزون</button>
+                </div>
+              </form>
+              <a href="{{ url_for('manage') }}" class="btn btn-danger" style="text-decoration: none; color: white; margin: 5px auto;">رجوع</a>
+              </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="{{js[0]}}"></script>
+    <script src="{{js[1]}}"></script>
+    <script src="{{js[2]}}"></script>
+    <script src="{{js[3]}}"></script>
+    <script src="{{js[4]}}"></script>
+</body>
+</html>

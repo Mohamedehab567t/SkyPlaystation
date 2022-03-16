@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{css[0]}}">
+    <link rel="stylesheet" href="{{css[1]}}">
+    <link rel="stylesheet" href="{{css[2]}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap" rel="stylesheet">
+
+    <title>ادارة المخازن</title>
+</head>
+<body style="background-color: darkseagreen; direction: rtl;">
+    
+    <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; color: white;">
+        <div style="width: 50%; padding: 15px; display: flex; justify-content: space-around; align-items: center;">
+            <div class="addproduct">
+                <h3 class="TitleOfSections" style="margin: 5px auto;">اضف منتج جديد</h3>
+                <form id="productform">
+                  <div class="form-group">
+                    <label for="nameofproduct" style="float: right;">اسم المنتج</label>
+                    <div class="clearfix"></div>
+                    <input type="text" class="form-control" id="nameofproduct" autocomplete="off" placeholder="اسم المنتج">
+                  </div>
+                  <div class="form-group">
+                    <label for="quantityinbox" style="float: right;">الكمية</label>
+                    <div class="clearfix"></div>
+                    <input type="number" class="form-control" id="quantityinbox" autocomplete="off" placeholder="الكمية">
+                  </div>
+                  <div class="form-group">
+                    <label for="priceofproduct" style="float: right;">سعر المنتج</label>
+                    <div class="clearfix"></div>
+                    <input type="number" class="form-control" id="priceofproduct" autocomplete="off" placeholder="سعر المنتج">
+                  </div>
+                <div class="btns">
+                  <button type="submit" id="P-add" class="btn btn-primary">اضف المنتج</button>
+                </div>
+              </form>
+              <a href="{{ url_for('manage') }}" class="btn btn-danger" style="text-decoration: none; color: white; margin: 5px auto;">رجوع</a>
+              </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="{{js[0]}}"></script>
+    <script src="{{js[1]}}"></script>
+    <script src="{{js[2]}}"></script>
+    <script src="{{js[3]}}"></script>
+    <script src="{{js[4]}}"></script>
+</body>
+</html>

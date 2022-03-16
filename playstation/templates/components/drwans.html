@@ -1,0 +1,36 @@
+<div id="RRRTabels">
+    <table class="mb-4" id="ReportsTable">
+      <thead>
+          <tr style="font-size: 14px;padding: 8px;">
+              <th>التاريخ</th>
+              <th>رقم الشيفت</th>
+              <th>رقم الفاتورة</th>
+              <th>الاسم</th>
+              <th>الكمية</th>
+              <th>المبلغ</th>
+            </tr>
+      </thead>
+      <tbody>
+          {% for e in r %}
+          <tr style="font-size: 14px;padding: 8px;">
+              <td>{{ e['date'] }}</td>
+              <td>{{e['shiftnumber']}}</td>
+              <td>{{ e['r_n'] }}</td>
+              <td>{{ e['name'] }}</td>
+              <td>{{ e['quantity'] }}</td>
+              <td>{{ e['cost'] }}</td>
+            </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <table  class="mb-4">
+    <thead>
+        {% for item in total %}
+      <tr style="font-size: 14px; font-weight: 800;">
+        <td> الاسم :  {{item}} </td>
+        <td> الاجمالي :  {{total[item]}} </td>
+      </tr>
+      {% endfor %}
+    </thead>
+  </table>

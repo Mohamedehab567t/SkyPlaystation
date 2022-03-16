@@ -1,0 +1,20 @@
+<table class="mb-4" id='ProducTabels'>
+    <thead>
+      <tr>
+        <th>اسم المنتج</th>
+        <th>سعره</th>
+        <th>مخزون</th>
+        <th>اضافة</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in Pproducts %}
+      <tr>
+        <td class="pName">{{p['p_name']}}</td>
+        <td>{{p['p_price']}} ج.م</td>
+        <td>{{'%0.1f' % p['totalquantity']}}</td>
+        <td><i class="fa fa-plus-circle plus" data-quantity="{{p['totalquantity']}}" id="{{p['_id']}}" style="color: green;"></i></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
